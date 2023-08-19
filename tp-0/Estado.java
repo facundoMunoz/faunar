@@ -8,6 +8,4 @@ public interface Estado {
 
     public void estado();
 
-    public String getEstado();
-
 }

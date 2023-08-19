@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.Semaphore;
 
 public class Mascota extends JPanel {
 
@@ -8,15 +9,19 @@ public class Mascota extends JPanel {
     // GUI
     private int WIDTH = 550;
     private int HEIGHT = 750;
+    private JPanel panel = new JPanel(null);
     private JLabel labelNombre = new JLabel(nombreMascota, SwingConstants.CENTER);
     private JLabel labelMensaje = new JLabel("", SwingConstants.CENTER);
     private JLabel labelImagen = new JLabel("", SwingConstants.CENTER);
+    // Semaforos
+    private Semaphore cambiarImagen = new Semaphore(1);
     // Botones
     private JButton botonAlimentar = new JButton("Alimentar");
     private JButton botonJugar = new JButton("Jugar");
     private JButton botonDormir = new JButton("Dormir");
     private JButton botonEstado = new JButton("Estado");
     // Animaciones
+    private Thread movimientoNormal;
     private int idle = 0;
     private int sleep = 0;
     private int play = 0;
@@ -24,8 +29,8 @@ public class Mascota extends JPanel {
 
     public Mascota() {
         JFrame frame = new JFrame("Mascota Virtual");
-        JPanel panel = new JPanel(null);
 
+        // Valores iniciales
         estado = new Aburrido(this);
         panel.setBackground(new Color(192, 185, 169));
 
@@ -37,7 +42,6 @@ public class Mascota extends JPanel {
         // Mensaje
         labelMensaje.setFont(new Font(labelMensaje.getFont().getName(), Font.PLAIN, 20));
         labelMensaje.setBounds(0, 60, WIDTH, 60);
-        setMensaje("¡Miau!");
         panel.add(labelMensaje);
         // Imagen
         labelImagen.setBounds(0, 0, WIDTH, HEIGHT);
@@ -65,6 +69,21 @@ public class Mascota extends JPanel {
         botonEstado.setFocusPainted(false);
         botonEstado.addActionListener(e -> estado.estado());
         panel.add(botonEstado);
+
+        // Animaciones
+        Runnable acciones = () -> {
+            try {
+                while (true) {
+                    cambiarImagen.acquire();
+                    animarIdle();
+                    cambiarImagen.release();
+                    Thread.sleep(500);
+                }
+            } catch (Exception e) {
+            }
+        };
+        movimientoNormal = new Thread(acciones);
+        movimientoNormal.start();
 
         // Iniciar frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,6 +114,7 @@ public class Mascota extends JPanel {
 
     public void animarDormir() {
         try {
+            cambiarImagen.acquire();
             desactivarBotones();
             for (int contador = 0; contador < 8; contador++) {
                 labelImagen.setIcon(new ImageIcon("images/sleep-" + sleep + ".png"));
@@ -102,12 +122,14 @@ public class Mascota extends JPanel {
                 Thread.sleep(500);
             }
             activarBotones();
+            cambiarImagen.release();
         } catch (Exception e) {
         }
     }
 
     public void animarJugar() {
         try {
+            cambiarImagen.acquire();
             desactivarBotones();
             for (int contador = 0; contador < 6; contador++) {
                 labelImagen.setIcon(new ImageIcon("images/play-" + play + ".png"));
@@ -115,12 +137,14 @@ public class Mascota extends JPanel {
                 Thread.sleep(250);
             }
             activarBotones();
+            cambiarImagen.release();
         } catch (Exception e) {
         }
     }
 
     public void animarComer() {
         try {
+            cambiarImagen.acquire();
             desactivarBotones();
             for (int contador = 0; contador < 6; contador++) {
                 labelImagen.setIcon(new ImageIcon("images/eat-" + eat + ".png"));
@@ -128,6 +152,7 @@ public class Mascota extends JPanel {
                 Thread.sleep(300);
             }
             activarBotones();
+            cambiarImagen.release();
         } catch (Exception e) {
         }
     }
@@ -149,16 +174,7 @@ public class Mascota extends JPanel {
     }
 
     public static void main(String[] args) {
-        Mascota mascota = new Mascota();
-
-        try {
-            while (true) {
-                mascota.animarIdle();
-                Thread.sleep(600);
-            }
-        } catch (Exception e) {
-        }
-
+        new Mascota();
     }
 
 }

@@ -8,27 +8,27 @@ public class Aburrido implements Estado {
 
     @Override
     public void alimentar() {
-        mascota.setMensaje("No parece tener hambre");
+        mascota.setMensaje("No quiere comer");
     }
 
     @Override
     public void jugar() {
-        mascota.setMensaje("Jugando");
+        Runnable acciones = () -> {
+            mascota.setMensaje("");
+            mascota.animarJugar();
+        };
+        Thread jugando = new Thread(acciones);
+        jugando.start();
     }
 
     @Override
     public void dormir() {
-        mascota.setMensaje("No parece tener sueño");
+        mascota.setMensaje("No quiere dormir");
     }
 
     @Override
     public void estado() {
         mascota.setMensaje("Quiere jugar");
-    }
-
-    @Override
-    public String getEstado() {
-        return "aburrido";
     }
 
 }
