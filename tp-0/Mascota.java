@@ -134,6 +134,7 @@ public class Mascota extends JPanel {
 
     public void setEstado(Estado nuevoEstado) {
         estado = nuevoEstado;
+      
     }
 
     public void setNombre(String nuevoNombre) {
