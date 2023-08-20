@@ -45,7 +45,7 @@ public class Mascota extends JPanel {
         panel.add(labelMensaje);
         // Imagen
         labelImagen.setBounds(0, 0, WIDTH, HEIGHT);
-        labelImagen.setIcon(new ImageIcon("images/idle-0.png"));
+        labelImagen.setIcon(new ImageIcon(getClass().getResource("images/idle-0.png")));
         panel.add(labelImagen);
 
         // Botones
@@ -108,7 +108,7 @@ public class Mascota extends JPanel {
     }
 
     public void animarIdle() {
-        labelImagen.setIcon(new ImageIcon("images/idle-" + idle + ".png"));
+        labelImagen.setIcon(new ImageIcon(getClass().getResource("images/idle-" + idle + ".png")));
         idle = (idle == 1) ? 0 : 1;
     }
 
@@ -117,7 +117,7 @@ public class Mascota extends JPanel {
             cambiarImagen.acquire();
             desactivarBotones();
             for (int contador = 0; contador < 8; contador++) {
-                labelImagen.setIcon(new ImageIcon("images/sleep-" + sleep + ".png"));
+                labelImagen.setIcon(new ImageIcon(getClass().getResource("images/sleep-" + sleep + ".png")));
                 sleep = (sleep == 1) ? 0 : 1;
                 Thread.sleep(500);
             }
@@ -132,7 +132,7 @@ public class Mascota extends JPanel {
             cambiarImagen.acquire();
             desactivarBotones();
             for (int contador = 0; contador < 6; contador++) {
-                labelImagen.setIcon(new ImageIcon("images/play-" + play + ".png"));
+                labelImagen.setIcon(new ImageIcon(getClass().getResource("images/play-" + play + ".png")));
                 play = (play == 1) ? 0 : 1;
                 Thread.sleep(250);
             }
@@ -147,7 +147,7 @@ public class Mascota extends JPanel {
             cambiarImagen.acquire();
             desactivarBotones();
             for (int contador = 0; contador < 6; contador++) {
-                labelImagen.setIcon(new ImageIcon("images/eat-" + eat + ".png"));
+                labelImagen.setIcon(new ImageIcon(getClass().getResource("images/eat-" + eat + ".png")));
                 eat = (eat == 1) ? 0 : 1;
                 Thread.sleep(300);
             }
