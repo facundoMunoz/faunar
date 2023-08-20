@@ -6,16 +6,17 @@ public class Cansado implements Estado {
     }
 
     public void alimentar() {
-        mascota.setMensaje("No tengo hambre en este momento");
+        mascota.setMensaje("No quiere comer");
     }
 
     public void jugar() {
-        mascota.setMensaje("Estoy demasiado cansado para jugar");
+        mascota.setMensaje("No quiere jugar");
     }
 
     public void dormir() {
         Runnable acciones = () -> {
             mascota.setMensaje("");
+            mascota.setEstado(new Aburrido(mascota));
             mascota.animarDormir();
         };
         Thread durmiendo = new Thread(acciones);
@@ -23,6 +24,6 @@ public class Cansado implements Estado {
     }
 
     public void estado() {
-        mascota.setMensaje("Estoy cansado");
+        mascota.setMensaje("Parece cansada");
     }
 }

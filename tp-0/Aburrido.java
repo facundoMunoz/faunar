@@ -15,6 +15,7 @@ public class Aburrido implements Estado {
     public void jugar() {
         Runnable acciones = () -> {
             mascota.setMensaje("");
+            mascota.setEstado(new Hambriento(mascota));
             mascota.animarJugar();
         };
         Thread jugando = new Thread(acciones);
@@ -28,7 +29,7 @@ public class Aburrido implements Estado {
 
     @Override
     public void estado() {
-        mascota.setMensaje("Quiere jugar");
+        mascota.setMensaje("Parece aburrida");
     }
 
 }
