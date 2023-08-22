@@ -3,6 +3,7 @@ public class Cansado implements Estado {
 
     public Cansado(Mascota nuevaMascota) {
         mascota = nuevaMascota;
+        mascota.setLabelEstado("Cansada");
     }
 
     public void alimentar() {
@@ -16,8 +17,9 @@ public class Cansado implements Estado {
     public void dormir() {
         Runnable acciones = () -> {
             mascota.setMensaje("");
-            mascota.setEstado(new Aburrido(mascota));
+            mascota.setLabelEstado("Durmiendo");
             mascota.animarDormir();
+            mascota.setEstado(new Aburrido(mascota));
         };
         Thread durmiendo = new Thread(acciones);
         durmiendo.start();

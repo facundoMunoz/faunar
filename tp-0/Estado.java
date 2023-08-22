@@ -6,6 +6,4 @@ public interface Estado {
 
     public void dormir();
 
-    public void estado();
-
 }

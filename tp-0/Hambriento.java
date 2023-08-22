@@ -3,14 +3,15 @@ public class Hambriento implements Estado {
 
     public Hambriento(Mascota nuevaMascota) {
         mascota = nuevaMascota;
-
+        mascota.setLabelEstado("Hambrienta");
     }
 
     public void alimentar() {
         Runnable acciones = () -> {
             mascota.setMensaje("");
-            mascota.setEstado(new Cansado(mascota));
+            mascota.setLabelEstado("Comiendo");
             mascota.animarComer();
+            mascota.setEstado(new Cansado(mascota));
         };
         Thread comiendo = new Thread(acciones);
         comiendo.start();

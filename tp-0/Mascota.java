@@ -13,13 +13,13 @@ public class Mascota extends JPanel {
     private JLabel labelNombre = new JLabel(nombreMascota, SwingConstants.CENTER);
     private JLabel labelMensaje = new JLabel("", SwingConstants.CENTER);
     private JLabel labelImagen = new JLabel("", SwingConstants.CENTER);
+    private JLabel labelEstado = new JLabel("", SwingConstants.CENTER);
     // Semaforos
     private Semaphore cambiarImagen = new Semaphore(1);
     // Botones
     private JButton botonAlimentar = new JButton("Alimentar");
     private JButton botonJugar = new JButton("Jugar");
     private JButton botonDormir = new JButton("Dormir");
-    private JButton botonEstado = new JButton("Estado");
     // Animaciones
     private Thread movimientoNormal;
     private int idle = 0;
@@ -43,6 +43,9 @@ public class Mascota extends JPanel {
         labelMensaje.setFont(new Font(labelMensaje.getFont().getName(), Font.PLAIN, 20));
         labelMensaje.setBounds(0, 60, WIDTH, 60);
         panel.add(labelMensaje);
+        // Estado
+        labelEstado.setBounds(0, 650, WIDTH, 60);
+        panel.add(labelEstado);
         // Imagen
         labelImagen.setBounds(0, 0, WIDTH, HEIGHT);
         labelImagen.setIcon(new ImageIcon(getClass().getResource("images/idle-0.png")));
@@ -64,11 +67,6 @@ public class Mascota extends JPanel {
         botonDormir.setFocusPainted(false);
         botonDormir.addActionListener(e -> estado.dormir());
         panel.add(botonDormir);
-        // Estado
-        botonEstado.setBounds(215, 670, 110, 30);
-        botonEstado.setFocusPainted(false);
-        botonEstado.addActionListener(e -> estado.estado());
-        panel.add(botonEstado);
 
         // Animaciones
         Runnable acciones = () -> {
@@ -97,14 +95,12 @@ public class Mascota extends JPanel {
         botonAlimentar.setEnabled(false);
         botonJugar.setEnabled(false);
         botonDormir.setEnabled(false);
-        botonEstado.setEnabled(false);
     }
 
     public void activarBotones() {
         botonAlimentar.setEnabled(true);
         botonJugar.setEnabled(true);
         botonDormir.setEnabled(true);
-        botonEstado.setEnabled(true);
     }
 
     public void animarIdle() {
@@ -116,7 +112,7 @@ public class Mascota extends JPanel {
         try {
             cambiarImagen.acquire();
             desactivarBotones();
-            for (int contador = 0; contador < 8; contador++) {
+            for (int contador = 0; contador < 10; contador++) {
                 labelImagen.setIcon(new ImageIcon(getClass().getResource("images/sleep-" + sleep + ".png")));
                 sleep = (sleep == 1) ? 0 : 1;
                 Thread.sleep(500);
@@ -131,7 +127,7 @@ public class Mascota extends JPanel {
         try {
             cambiarImagen.acquire();
             desactivarBotones();
-            for (int contador = 0; contador < 6; contador++) {
+            for (int contador = 0; contador < 9; contador++) {
                 labelImagen.setIcon(new ImageIcon(getClass().getResource("images/play-" + play + ".png")));
                 play = (play == 1) ? 0 : 1;
                 Thread.sleep(250);
@@ -146,7 +142,7 @@ public class Mascota extends JPanel {
         try {
             cambiarImagen.acquire();
             desactivarBotones();
-            for (int contador = 0; contador < 6; contador++) {
+            for (int contador = 0; contador < 8; contador++) {
                 labelImagen.setIcon(new ImageIcon(getClass().getResource("images/eat-" + eat + ".png")));
                 eat = (eat == 1) ? 0 : 1;
                 Thread.sleep(300);
@@ -159,6 +155,10 @@ public class Mascota extends JPanel {
 
     public void setEstado(Estado nuevoEstado) {
         estado = nuevoEstado;
+    }
+
+    public void setLabelEstado(String nuevoLabelEstado) {
+        labelEstado.setText("Estado: " + nuevoLabelEstado);
     }
 
     public void setNombre(String nuevoNombre) {
