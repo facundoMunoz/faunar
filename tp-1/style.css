@@ -1,0 +1,95 @@
+/* REINICIAR ESTILO */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: Helvetica;
+}
+
+:root {
+    --color-white: #ddd;
+    --color-orange: #ed7014;
+}
+
+/* GENERAL */
+.texto {
+    color: var(--color-white);
+}
+
+/* ENCABEZADO */
+.encabezado {
+    display: flex;
+    justify-content: center;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 75vw;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+}
+
+.link {
+    font-size: 18px;
+    position: relative;
+}
+
+.logo {
+    font-size: 23px;
+    color: var(--color-orange);
+}
+
+.link::after {
+    /* Efecto subrayado en links */
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: -4px;
+    background: var(--color-orange);
+    transform: scale(0, 1);
+    transition: transform 0.3s ease;
+}
+
+.link:hover::after {
+    transform: scale(1, 1);
+}
+
+/* PORTADA */
+.portada {
+    height: max(600px, 100vh);
+    width: 100vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(img/yaguarete.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.subtitulo {
+    font-size: 30px;
+    color: var(--color-orange);
+}
+
+.titulo {
+    font-size: 60px;
+}
