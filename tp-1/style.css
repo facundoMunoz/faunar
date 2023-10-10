@@ -12,14 +12,25 @@
     font-family: Helvetica;
 }
 
+/* VARIABLES */
 :root {
     --color-white: #ddd;
     --color-orange: #ed7014;
+    --dark-grey: #333;
 }
 
 /* GENERAL */
+html {
+    scroll-behavior: smooth;
+}
+
 .texto {
     color: var(--color-white);
+}
+
+.seccion {
+    height: max(600px, 100vh);
+    width: 100vw;
 }
 
 /* ENCABEZADO */
@@ -32,7 +43,7 @@
 .navbar {
     width: 75vw;
     height: 60px;
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -74,8 +85,6 @@
 
 /* PORTADA */
 .portada {
-    height: max(600px, 100vh);
-    width: 100vw;
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(img/yaguarete.jpg);
     background-size: cover;
     background-position: center;
@@ -91,5 +100,43 @@
 }
 
 .titulo {
-    font-size: 60px;
+    font-size: 75px;
 }
+
+/* ANIMALES */
+.animales {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url(img/forest.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-animales {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: solid var(--color-white) 1px;
+    height: 75%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.titulo-animales {
+    font-size: 40px;
+}
+
+.scroll {
+    /*background-color: rgba(0, 0, 0, 0.6);*/
+    height: 75%;
+    width: 100%;
+}
+
+/* INFORMACIÓN */
+.informacion {}
+
+/* FOOTER */
+.footer {}
