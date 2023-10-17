@@ -3,45 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>YaguAr: Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/230404f521.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <title>YaguAr: Home</title>
 </head>
 
 <body>
-    <!-- Encabezado -->
-    <header class="encabezado">
-        <!-- Navbar -->
+
+    <header class="header">
+
+        <!-- BACKGROUND -->
+        <video autoplay muted loop class="background" src="img/waterfall.mp4"></video>
+
+        <!-- NAVBAR -->
         <nav class="navbar">
-            <!-- TODO: cambiar JaguAr por logo -->
-            <a href="#portada" class="texto logo">YaguAr</a>
-            <ul class="links">
-                <li><a href="#animales" class="texto link">ANIMALES</a></li>
-                <li><a href="#informacion" class="texto link">ACERCA DE</a></li>
-            </ul>
+            <a class="text local-link" href="#">HOME</a>
+            <a class="text local-link" href="animales.html">ANIMALES</a>
         </nav>
-        <!-- Portada -->
-        <section id="portada" class="seccion portada">
-            <h2 class="texto subtitulo">YaguAr</h2>
-            <h1 class="texto titulo">Conocé la fauna de Argentina</h1>
-        </section>
-    </header>
-    <!-- Cuerpo -->
-    <!-- Animales -->
-    <section id="animales" class="seccion animales">
-        <article class="scroll-animales">
-            <h2 class="texto titulo-animales">Nuestros animales</h2>
-            <article class="scroll">
 
-            </article>
+        <!-- MEDIA -->
+        <aside class="media">
+            <a class="text media-link" href="https://github.com/facundoMunoz/laboratorio-programacion"><i
+                    class="logo fa-brands fa-github"></i></a>
+            <a class="text media-link" href="">
+                <i class="logo fa-solid fa-hand-holding-medical"></i></i></a>
+        </aside>
+
+        <!-- TITLE -->
+        <h1 class="text title">Yagu<span>Ar</span></h1>
+
+        <!-- FEATURE CARDS -->
+        <article class="features">
+            <!-- ACERCA DE -->
+            <section class="feature-card">
+                <div class="feature-header">
+                    <i class="feature-icon fa-solid fa-earth-americas"></i>
+                    <h2 class="text feature-title">ACERCA DE</h2>
+                </div>
+                <p class="text description">Descubrí animales autóctonos de Argentina</p>
+            </section>
+            <!-- SOBRE NOSOTROS -->
+            <section class="feature-card">
+                <div class="feature-header">
+                    <i class="feature-icon fa-solid fa-user"></i>
+                    <h2 class="text feature-title">SOBRE NOSOTROS</h2>
+                </div>
+                <p class="text description">Somos estudiantes de la Universidad
+                    Nacional del Comahue
+                </p>
+            </section>
         </article>
-    </section>
-    <!-- Información -->
-    <section id="informacion" class="seccion informacion">
 
-    </section>
-    <!-- Footer -->
-    <footer class="footer"></footer>
+    </header>
+
 </body>
 
 </html>

@@ -1,0 +1,23 @@
+.presentation {
+    height: 60%;
+    width: 80%;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.scientific-name {
+    position: relative;
+    font-size: 22px;
+}
+
+.name {
+    position: relative;
+    font-size: 80px;
+}
+
+.description {
+    position: relative;
+    width: 30%;
+}
