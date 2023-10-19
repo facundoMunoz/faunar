@@ -4,23 +4,23 @@
     width: 70%;
     gap: 30px;
     display: flex;
-    overflow: hidden;
+    overflow: auto;
     align-items: center;
 }
 
 .animal {
-    background-color: var(--color-transparent-grey);
     min-width: calc(100%/2 - 15px);
-    backdrop-filter: blur(6px);
     border-radius: 40px;
     overflow: hidden;
     height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .animal h2 {
     position: absolute;
-    margin-left: 30px;
-    margin-top: 30px;
+    bottom: 0;
     font-size: 65px;
 }
 
@@ -28,7 +28,5 @@
     color: var(--color-white);
     position: absolute;
     width: auto;
-    height: 80%;
-    right: -50px;
-    bottom: 0;
+    height: 90%;
 }

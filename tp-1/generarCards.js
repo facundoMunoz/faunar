@@ -18,8 +18,8 @@ fetch("./infoAnimales.json")
             name.classList.add("text");
             name.innerHTML = json[pos].nombreAnimal;
 
-            animal.appendChild(name);
             animal.appendChild(image);
+            animal.appendChild(name);
             document.querySelector(".animals").appendChild(animal);
         }
     });
