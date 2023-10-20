@@ -19,6 +19,7 @@
     --color-white: #f0ffff;
     --color-light-blue: #75AADB;
     --color-transparent-grey: rgba(20, 20, 20, 0.5);
+    --color-transparent-dark-grey: rgba(20, 20, 20, 0.6);
 }
 
 /* GENERAL */

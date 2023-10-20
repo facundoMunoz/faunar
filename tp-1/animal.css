@@ -7,6 +7,18 @@
     align-items: flex-start;
 }
 
+.background {
+    filter: none;
+}
+
+.background-filter {
+    background-color: var(--color-transparent-dark-grey);
+    position: absolute;
+    height: 100vh;
+    width: 50vw;
+    left: 0;
+}
+
 .scientific-name {
     position: relative;
     font-size: 22px;
