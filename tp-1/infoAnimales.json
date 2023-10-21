@@ -1,7 +1,7 @@
 {
 	"1": {
-		"nombreAnimal": "YAGUARETÉ",
-		"nombreCientifico": "PANTHERA ONCA",
+		"nombreAnimal": "Yaguareté",
+		"nombreCientifico": "Panthera onca",
 		"descripcion": "Máximo predador y felino de América. Carnívoro félido, misterioso y solitario, se esconde entre los árboles y los matorrales. Su pelaje, con manchas negras sobre un fondo amarillo o marrón, le ayuda a camuflarse en su entorno. Es un depredador implacable, un cazador experto que puede saltar hasta 6 metros de altura y 12 metros de distancia. Su fuerza y su velocidad le permiten derribar a presas mucho más grandes que él. Es un animal importante para el ecosistema, ya que ayuda a controlar las poblaciones de sus presas. Su extinción sería una pérdida irreparable para la biodiversidad.",
 		"pesoTamanio": "Mide entre 150 y 170 cm de largo, más 80 cm aproximadamente que mide la cola, con una altura de entre 65 a 80 cm hasta la cruz y un peso de entre 70 y 90 kg, aunque puede llegar a pesar hasta 135 kg.",
 		"zonas": "Yungas de Salta y Jujuy, la selva misionera y algunos sectores de la región chaqueña, además de zonas protegidas como Parques Nacionales Iguazú (Misiones), Copo (Santiago del Estero), Calilegua (Jujuy), Baritú y la Reserva Nacional El Nogalar de los Toldos (Salta)",
@@ -10,8 +10,8 @@
 	},
 	"2": {
 		"id": "2",
-		"nombreAnimal": "YACARÉ",
-		"nombreCientifico": "CAIMAN YACARE",
+		"nombreAnimal": "Yacaré",
+		"nombreCientifico": "Caiman Yacare",
 		"descripcion": "Depredador silencioso que acecha en las aguas oscuras de los ríos, esteros y lagunas. Su piel oscura lo camufla a la perfección, y su cola poderosa le permite lanzarse sobre sus presas con la velocidad del rayo. Puede permanecer inmóvil durante horas, esperando a que su presa se acerque.",
 		"pesoTamanio": "El yacaré en su estado adulto puede superar los 2,5 metros de largo y pesar más de 50 kilos.",
 		"zonas": "Se pueden encontrar yacarés en ríos, arroyos, esteros, lagunas y zonas pantanosas. En especial en aguas calmas y con vegetación acuática en las provincias: Misiones, Corrientes, Formosa y parte de Santa Fe, Entre Ríos, Chaco y Salta.",
@@ -20,8 +20,8 @@
 	},
 	"3": {
 		"id": "3",
-		"nombreAnimal": "CARPINCHO",
-		"nombreCientifico": "HYDROCHERUS HYDROCHAERIS",
+		"nombreAnimal": "Carpincho",
+		"nombreCientifico": "Hydrocherus hydrochaeris",
 		"descripcion": "Es un roedor herbívoro anfibio, que por su tamaño resulta el mayor de los roedores vivientes. Es de hábitos apacibles y gregarios. Conforma grupos sociales de entre tres y diez (o más) individuos. Posee un comportamiento reproductivo del tipo de harén (un macho puede tener varias hembras). ",
 		"pesoTamanio": "Un ejemplar adulto de carpincho pesa alrededor de 55 Kg y mide más de 1 metro de largo y entre 50 y 62 cm de altura.",
 		"zonas": "Habita en zonas costeras de río, arroyos, lagunas y bañados preferentemente zona de pastizales y arbustos donde encuentran refugio. Vive en la provincia mesopotámica de Misiones, Corrientes y Entre Ríos. También se los encuentra en zonas de esteros, bañados y a orilla de cursos de agua de la provincia de Formosa, Salta, Chaco y Santa Fe y Buenos Aires.",
