@@ -5,59 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/230404f521.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>YaguAr: Home</title>
+    <!-- STYLES -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>FaunAr: Inicio</title>
 </head>
 
 <body>
 
+    <!-- HEADER -->
     <header class="header">
 
         <!-- BACKGROUND -->
-        <video autoplay muted loop class="background" src="img/waterfall.mp4"></video>
+        <video autoplay muted loop class="background" src="assets/media/videofondo.mp4"></video>
+
+        <!-- PRESENTATION -->
+        <article class="presentation">
+            <h1 class="title"><i onclick="pageDown()" class="fa-solid fa-paw"></i> Faun<span>Ar</span></h1>
+        </article>
 
         <!-- NAVBAR -->
         <nav class="navbar">
-            <a class="text local-link" href="#">
-                <i class="fa-solid fa-house"></i> INICIO</a>
-            <a class="text local-link" href="animales.html">
-                <i class="fa-solid fa-paw"></i> ANIMALES</a>
+            <a class="text local-link" onclick="pageUp()">INICIO</a>
+            <a class="text local-link" onclick="pageDown()">ANIMALES</a>
         </nav>
 
-        <!-- MEDIA -->
-        <aside class="media">
-            <a class="text media-link" href="https://github.com/facundoMunoz/laboratorio-programacion"><i
-                    class="logo fa-brands fa-github"></i></a>
-            <a class="text media-link" href="">
-                <i class="logo fa-solid fa-hand-holding-medical"></i></i></a>
-        </aside>
-
-        <!-- TITLE -->
-        <h1 class="text title">Yagu<span>Ar</span></h1>
-
-        <!-- FEATURE CARDS -->
-        <article class="features">
-            <!-- ACERCA DE -->
-            <section class="feature-card">
-                <div class="feature-header">
-                    <i class="feature-icon fa-solid fa-earth-americas"></i>
-                    <h2 class="text feature-title">ACERCA DE</h2>
-                </div>
-                <p class="text description">Descubrí animales autóctonos de Argentina</p>
-            </section>
-            <!-- SOBRE NOSOTROS -->
-            <section class="feature-card">
-                <div class="feature-header">
-                    <i class="feature-icon fa-solid fa-user"></i>
-                    <h2 class="text feature-title">SOBRE NOSOTROS</h2>
-                </div>
-                <p class="text description">Somos estudiantes de la Universidad
-                    Nacional del Comahue
-                </p>
-            </section>
-        </article>
+        <a class="button" onclick="pageDown()"><i class="fa-solid fa-angle-down"></i></a>
 
     </header>
+
+    <!-- ANIMALS -->
+    <article id="animals" class="animals">
+        <h2 class="text subtitle">Nuestros animales</h2>
+        <section class="container card__container swiper">
+            <div class="swiper-wrapper">
+            </div>
+        </section>
+        <a class="button" onclick="pageUp()"><i class="fa-solid fa-angle-up"></i></a>
+    </article>
+
+    <!-- SWIPER -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 

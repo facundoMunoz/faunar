@@ -1,0 +1,133 @@
+/* HEADER */
+.background-back {
+    filter: brightness(0.7) blur(2px);
+    position: fixed;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.background-front {
+    filter: brightness(0.6);
+    object-fit: cover;
+    position: fixed;
+    height: 100%;
+    z-index: 30;
+    width: 100%;
+}
+
+.background-animal {
+    filter: brightness(0.9);
+    object-fit: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.animal-id {
+    background-color: var(--color-transparent-black);
+    border-radius: 7px;
+    position: fixed;
+    width: 400px;
+    height: 80%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/*.animal-id h2 {
+    color: var(--color-transparent-white);
+    font-family: Helvetica;
+    position: absolute;
+    font-size: 235px;
+    top: 0;
+    left: 6px;
+}*/
+
+.animal-id h2 {
+    color: var(--color-transparent-white);
+    font-family: Helvetica;
+    position: absolute;
+    font-size: 80px;
+    top: 0;
+    left: 6px;
+}
+
+.fog-img {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.fog-1 {
+    background: url("../media/backgrounds/fog-1.png") repeat-x;
+    background-size: 200% 100%;
+    background-position: 0 bottom;
+    animation: marquee 15s linear infinite;
+}
+
+.fog-2 {
+    background: url("../media/backgrounds/fog-2.png") repeat-x;
+    background-size: 200% 100%;
+    background-position: 0 bottom;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        background-position: -200% bottom;
+    }
+
+    100% {
+        background-position: 0 bottom;
+    }
+}
+
+/* CARDS */
+.cards {
+    background-color: var(--color-transparent-black);
+    height: max(100vh, 600px);
+    width: max(100vw, 400px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card {
+    backdrop-filter: blur(10px);
+    transition: all 0.5s ease;
+    position: relative;
+    border-radius: 30px;
+    height: 300px;
+    width: 350px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-cards {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* MOVE ANIMALS */
+.buttons {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-animal {
+    position: relative;
+}

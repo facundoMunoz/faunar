@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/230404f521.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animal.css">
+    <title>FaunAr: Animal</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <!-- BACKGROUND -->
+        <img class="background-back" src="../media/backgrounds/back.jpg" alt="forest-back">
+        <div class="fog-img fog-1"></div>
+        <div class="fog-img fog-2"></div>
+        <section class="animal-id">
+            <div class="buttons">
+                <button class="button button-animal next-animal"><i class="fa-solid fa-angle-left"></i></button>
+                <button class="button button-animal previous-animal"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+            <h2>#00</h2>
+        </section>
+        <img class="background-front" src="../media/backgrounds/front.png" alt="forest-front">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a class="text local-link" href="../../index.html">INICIO</a>
+            <a class="text local-link" href="../../index.html#animals">ANIMALES</a>
+        </nav>
+
+        <button class="button" onclick="pageDown()"><i class="fa-solid fa-angle-down"></i></button>
+
+    </header>
+
+    <article id="cards" class="cards">
+        <section class="container card__container swiper">
+            <div class="feature-cards swiper-wrapper">
+                <!-- Animal description -->
+                <section class="card__article swiper-slide feature-card about">
+                    <div class="feature-header">
+                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-paw"></i>
+                            <span class="name">Animal</span>
+                        </h2>
+                    </div>
+                    <p class="text description name-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
+                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                </section>
+                <!-- Animal location -->
+                <section class="card__article swiper-slide feature-card about">
+                    <div class="feature-header">
+                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-location-dot"></i> Ubicación
+                        </h2>
+                    </div>
+                    <p class="text description-text location">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
+                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                </section>
+                <!-- Animal height/weigth -->
+                <section class="card__article swiper-slide feature-card about">
+                    <div class="feature-header">
+                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-dumbbell"></i> Peso/Altura
+                        </h2>
+                    </div>
+                    <p class="text description weightHeight">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
+                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                </section>
+                <!-- Animal diet -->
+                <section class="card__article swiper-slide feature-card about">
+                    <div class="feature-header">
+                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-utensils"></i> Alimentación
+                        </h2>
+                    </div>
+                    <p class="text description diet">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
+                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                </section>
+            </div>
+        </section>
+
+        <button class="button" onclick="pageUp()"><i class="fa-solid fa-angle-up"></i></button>
+
+    </article>
+
+    <script src="../js/animal.js"></script>
+    <script src="../js/animal-swiper.js"></script>
+
+</body>
+
+</html>

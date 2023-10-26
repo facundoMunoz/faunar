@@ -1,0 +1,204 @@
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* RESET STYLES */
+*,
+*::before,
+*::after {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    text-decoration: none;
+    user-select: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* GENERAL */
+body {
+    background-color: var(--color-grey);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text {
+    color: var(--color-white);
+    font-family: Helvetica;
+}
+
+/* VARIABLES */
+:root {
+    --color-grey: #222;
+    --color-white: #f0ffff;
+    --color-orange: #ff6f00;
+    --color-light-blue: #75AADB;
+    --color-transparent-black: rgba(0, 0, 0, 0.5);
+    --color-transparent-white: rgba(255, 255, 255, 0.3);
+}
+
+/* HEADER */
+.header {
+    height: max(100vh, 600px);
+    width: 100vw;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+/* PRESENTATION */
+.presentation {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.presentation .title {
+    font-family: 'Pacifico', cursive;
+    color: var(--color-white);
+    position: relative;
+    font-size: 55px;
+}
+
+.title span {
+    color: var(--color-light-blue);
+}
+
+.title i {
+    transition: all 0.2s ease;
+}
+
+.title i:hover {
+    color: var(--color-orange);
+}
+
+.header .button i {
+    transform: translateY(3px);
+}
+
+/* BACKGROUND */
+.header .background {
+    filter: brightness(0.4);
+    object-fit: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+/* NAVBAR */
+.navbar {
+    position: absolute;
+    z-index: 300;
+    height: 70px;
+    width: 100%;
+    gap: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .local-link {
+    position: relative;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.local-link::after {
+    /* Underline links */
+    background: var(--color-orange);
+    transform: scale(0, 1);
+    position: absolute;
+    bottom: -1px;
+    content: '';
+    height: 3px;
+    width: 100%;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.local-link:hover::after {
+    transform: scale(1, 1);
+}
+
+/* ANIMALS */
+.animals {
+    backdrop-filter: blur(7px);
+    height: max(100vh, 550px);
+    position: relative;
+    width: 100vw;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    height: 75vh;
+    width: max(70vw, 400px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--color-grey);
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card h2 {
+    font-size: 45px;
+    transform: translateY(-35px);
+}
+
+.card a {
+    background-color: var(--color-orange);
+    transform: translateY(-20px);
+    color: var(--color-white);
+    font-family: Helvetica;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    padding: 15px 35px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.animals .subtitle {
+    font-size: 35px;
+}
+
+.button {
+    background-color: var(--color-white);
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 300;
+    margin: 50px;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button i {
+    color: var(--color-grey);
+    font-size: 40px;
+}
