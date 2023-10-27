@@ -20,12 +20,9 @@
         <div class="fog-img fog-1"></div>
         <div class="fog-img fog-2"></div>
         <section class="animal-id">
-            <div class="buttons">
-                <button class="button button-animal next-animal"><i class="fa-solid fa-angle-left"></i></button>
-                <button class="button button-animal previous-animal"><i class="fa-solid fa-angle-right"></i></button>
-            </div>
-            <h2>#00</h2>
+            <h2></h2>
         </section>
+        <img class="animal-img background-animal" alt="">
         <img class="background-front" src="../media/backgrounds/front.png" alt="forest-front">
 
         <!-- NAVBAR -->
@@ -35,6 +32,11 @@
         </nav>
 
         <button class="button" onclick="pageDown()"><i class="fa-solid fa-angle-down"></i></button>
+
+        <div class="buttons">
+            <button class="button button-animal" onclick="previousAnimal()"><i class="fa-solid fa-angle-left"></i></button>
+            <button class="button button-animal" onclick="nextAnimal()"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
 
     </header>
 
@@ -48,9 +50,7 @@
                             <span class="name">Animal</span>
                         </h2>
                     </div>
-                    <p class="text description name-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
-                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                    <p class="text description name-text"></p>
                 </section>
                 <!-- Animal location -->
                 <section class="card__article swiper-slide feature-card about">
@@ -58,9 +58,7 @@
                         <h2 class="text feature-title"><i class="feature-icon fa-solid fa-location-dot"></i> Ubicación
                         </h2>
                     </div>
-                    <p class="text description-text location">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
-                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                    <p class="text description-text location"></p>
                 </section>
                 <!-- Animal height/weigth -->
                 <section class="card__article swiper-slide feature-card about">
@@ -68,9 +66,7 @@
                         <h2 class="text feature-title"><i class="feature-icon fa-solid fa-dumbbell"></i> Peso/Altura
                         </h2>
                     </div>
-                    <p class="text description weightHeight">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
-                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                    <p class="text description weightHeight"></p>
                 </section>
                 <!-- Animal diet -->
                 <section class="card__article swiper-slide feature-card about">
@@ -78,9 +74,7 @@
                         <h2 class="text feature-title"><i class="feature-icon fa-solid fa-utensils"></i> Alimentación
                         </h2>
                     </div>
-                    <p class="text description diet">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Culpa, blanditiis. Optio non, inventore explicabo nihil, nesciunt atque impedit quisquam sint
-                        asperiores eum aliquid ratione dolore doloremque voluptatem quas. Corporis, aliquid?</p>
+                    <p class="text description diet"></p>
                 </section>
             </div>
         </section>

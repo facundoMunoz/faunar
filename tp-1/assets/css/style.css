@@ -36,7 +36,7 @@ body {
     --color-orange: #ff6f00;
     --color-light-blue: #75AADB;
     --color-transparent-black: rgba(0, 0, 0, 0.5);
-    --color-transparent-white: rgba(255, 255, 255, 0.3);
+    --color-transparent-white: rgba(255, 255, 255, 0.4);
 }
 
 /* HEADER */
@@ -61,8 +61,8 @@ body {
 .presentation .title {
     font-family: 'Pacifico', cursive;
     color: var(--color-white);
-    position: relative;
     font-size: 55px;
+    position: fixed;
 }
 
 .title span {
