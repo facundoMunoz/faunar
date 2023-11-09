@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>FaunAr: Nuevo animal</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <!-- BACKGROUND -->
+        <video autoplay muted loop class="background" src="../media/videofondo.mp4"></video>
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a class="text local-link" href="../../index.html">INICIO</a>
+            <a class="text local-link" href="../../index.html#animals">ANIMALES</a>
+        </nav>
+
+        <article class="form-screen">
+            <form class="form">
+                <h2 class="text">Nuevo animal</h2>
+                <input id="name" type="text" placeholder="Nombre">
+                <input id="scientificName" type="text" placeholder="Nombre científico">
+                <input id="weightHeight" type="text" placeholder="Peso y tamaño">
+                <input id="zones" type="text" placeholder="Zonas">
+                <input id="diet" type="text" placeholder="Dieta">
+                <input id="description" type="text" placeholder="Descripción">
+                <button class="card__button" href="assets/html/form.html" onclick="addAnimal()">Agregar animal</button>
+            </form>
+        </article>
+
+    </header>
+
+    <script src="../js/form.js"></script>
+
+</body>
+
+</html>

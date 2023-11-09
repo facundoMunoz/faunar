@@ -179,6 +179,7 @@ body {
 }
 
 .animals .subtitle {
+    margin-top: 30px;
     font-size: 35px;
 }
 
@@ -201,4 +202,18 @@ body {
 .button i {
     color: var(--color-grey);
     font-size: 40px;
+}
+
+.card__button {
+    background-color: var(--color-orange);
+    transform: translateY(-20px);
+    color: var(--color-white);
+    font-family: Helvetica;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    padding: 15px 35px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
 }
