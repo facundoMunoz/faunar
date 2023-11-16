@@ -1,13 +1,32 @@
+let newAnimal;
+
 addAnimal = () => {
-    let newAnimal = new Array(6);
+    newAnimal = {
+        nombreAnimal: document.getElementById('name').value,
+        nombreCientifico: document.getElementById('scientificName').value,
+        descripcion: document.getElementById('description').value,
+        pesoTamanio: document.getElementById('weightHeight').value,
+        zonas: document.getElementById('zones').value,
+        dieta: document.getElementById('diet').value,
+    };
 
-    newAnimal[0] = document.getElementById('name').value;
-    newAnimal[1] = document.getElementById('scientificName').value;
-    newAnimal[2] = document.getElementById('description').value;
-    newAnimal[3] = document.getElementById('weightHeight').value;
-    newAnimal[4] = document.getElementById('zones').value;
-    newAnimal[5] = document.getElementById('diet').value;
-
-    console.log(newAnimal);
-    return newAnimal;
-};
+    fetch ('http://localhost:3000/api/animales', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+          body: JSON.stringify(newAnimal)
+        })
+    
+        .then (function(res) {
+            if (res.ok) {
+            console.log('POST completado.');
+            return res;
+            }
+            else
+                throw new Error('POST fallido.');
+        })
+        .catch (function(error) {
+            console.log(error);
+        });
+    }

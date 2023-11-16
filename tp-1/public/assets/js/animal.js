@@ -3,6 +3,8 @@ let currentId = 0;
 let animalsAmount = 0;
 let data;
 
+getAnimal();
+
 // Full-page scroll
 addEventListener("wheel", (event) => {
     if (event.deltaY < 0) {
@@ -23,9 +25,8 @@ const pageUp = () => {
 // Load data
 const loadInfo = () => {
     currentUrl = window.location.href;
-    currentId = currentUrl.substring(currentUrl.indexOf('#') + 1, currentUrl.length);
-    animalsAmount = Object.keys(data).length;
-
+    currentId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1, currentUrl.length);
+    
     document.querySelector(".animal-id h2").innerHTML = data[currentId].nombreAnimal;
 
     // Data
@@ -41,10 +42,13 @@ const loadInfo = () => {
 }
 
 //antes habia "../js/infoAnimales.json"
-fetch("/informacion")
+//fetch("../../informacion")
+// fetch("../storage/infoAnimales.json")
+const getAnimal = () => fetch("/informacion")
     .then((response) => response.json())
     .then((json) => {
         data = json;
+        animalsAmount = Object.keys(json).length;
         loadInfo();
     });
 
@@ -52,21 +56,20 @@ fetch("/informacion")
 const previousAnimal = () => {
     if (currentId <= 1) {
         currentId = animalsAmount;
-        window.location.href = "animal.html#" + animalsAmount;
     } else {
         currentId--;
-        window.location.href = "animal.html#" + currentId;
     }
+    window.location.href = currentUrl.substring(0,currentUrl.lastIndexOf('/') + 1) + currentId;
+    getAnimal();
     loadInfo();
 }
 
 const nextAnimal = () => {
     if (currentId >= animalsAmount) {
         currentId = 1;
-        window.location.href = "animal.html#1";
     } else {
         currentId++;
-        window.location.href = "animal.html#" + currentId;
     }
-    loadInfo();
+    window.location.href = currentUrl.substring(0,currentUrl.lastIndexOf('/') + 1) + currentId;
+    getAnimal();
 }
