@@ -11,81 +11,75 @@
 </head>
 
 <body>
-
     <!-- HEADER -->
-    <header class="header">
-
-        <!-- BACKGROUND -->
-        <img class="background-back" src="../media/backgrounds/back.jpg" alt="forest-back">
-        <div class="fog-img fog-1"></div>
-        <div class="fog-img fog-2"></div>
-        <section class="animal-id">
-            <h2></h2>
-        </section>
-        <img class="animal-img background-animal" alt="">
-        <img class="background-front" src="../media/backgrounds/front.png" alt="forest-front">
-
-        <!-- NAVBAR -->
+    <article id="header" class="article">
         <nav class="navbar">
-            <a class="text local-link" href="../../index.html">INICIO</a>
-            <a class="text local-link" href="../../index.html#animals">ANIMALES</a>
+            <div class="navbar-left">
+                <a href="../../index.html"><i class="navbar-icon fa-solid fa-paw"></i></a>
+            </div>
+            <div class="navbar-right">
+                <button class="text button navbar-link" onclick="focusInfo()">Características</button>
+                <a href="addAnimal.html"><i class="navbar-icon fa-regular fa-circle-user"></i></a>
+            </div>
         </nav>
-
-        <button class="button" onclick="pageDown()"><i class="fa-solid fa-angle-down"></i></button>
-
-        <div class="buttons">
-            <button class="button button-animal" onclick="previousAnimal()"><i class="fa-solid fa-angle-left"></i></button>
-            <button class="button button-animal" onclick="nextAnimal()"><i class="fa-solid fa-angle-right"></i></button>
-        </div>
-
-    </header>
-
-    <article id="cards" class="cards">
-        <section class="container card__container swiper">
-            <div class="feature-cards swiper-wrapper">
-                <!-- Animal description -->
-                <section class="card__article swiper-slide feature-card about">
-                    <div class="feature-header">
-                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-paw"></i>
-                            <span class="name">Animal</span>
-                        </h2>
-                    </div>
-                    <p class="text description name-text"></p>
+        <header class="header">
+            <section class="animal">
+                <section class="animal-main">
+                    <h3 class="text scientific-name">Nombre científico</h3>
+                    <h2 class="text animal-name">Nombre animal</h2>
+                    <p class="text animal-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi id, qui
+                        similique accusamus rerum inventore minus laborum tenetur tempora ipsa quos voluptatum modi
+                        quaerat exercitationem nostrum saepe amet consectetur neque?</p>
+                    <p class="extinction"><i class="danger-icon fa-solid fa-triangle-exclamation"></i> Peligro de
+                        extinción</p>
+                    <button class="button arrow-button-down" onclick="focusInfo()"><i
+                            class="fa-solid fa-circle-chevron-down"></i></button>
                 </section>
-                <!-- Animal location -->
-                <section class="card__article swiper-slide feature-card about">
-                    <div class="feature-header">
-                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-location-dot"></i> Ubicación
-                        </h2>
+                <section class="animal-images">
+                    <section class="animal-image"></section>
+                    <div class="buttons">
+                        <button class="button arrow-button"><i class="fa-solid fa-circle-chevron-left"></i></button>
+                        <button class="button arrow-button"><i class="fa-solid fa-circle-chevron-right"></i></button>
                     </div>
-                    <p class="text description-text location"></p>
                 </section>
-                <!-- Animal height/weigth -->
-                <section class="card__article swiper-slide feature-card about">
-                    <div class="feature-header">
-                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-dumbbell"></i> Peso/Altura
-                        </h2>
-                    </div>
-                    <p class="text description weightHeight"></p>
-                </section>
-                <!-- Animal diet -->
-                <section class="card__article swiper-slide feature-card about">
-                    <div class="feature-header">
-                        <h2 class="text feature-title"><i class="feature-icon fa-solid fa-utensils"></i> Alimentación
-                        </h2>
-                    </div>
-                    <p class="text description diet"></p>
-                </section>
+            </section>
+        </header>
+    </article>
+    <!-- INFO -->
+    <article id="info" class="article">
+        <h2 class="text info-title">Características</h2>
+        <section id="info-cards" class="info-cards">
+            <div class="card">
+                <h2 class="card-title"><i class="fa-solid fa-dumbbell"></i> <span class="text">Peso / Tamaño</span></h2>
+                <p class="text card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi veniam sed eligendi harum, assumenda aperiam enim illo pariatur non veritatis cum eum quidem architecto fugiat possimus? Quod tempore repudiandae blanditiis!</p>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><i class="fa-solid fa-location-dot"></i> <span class="text">Zonas</span></h2>
+                <p class="text card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem qui deleniti facere nemo aliquam sint consequuntur accusamus veritatis ipsa voluptatibus ullam ab sunt suscipit necessitatibus quia assumenda consequatur, cum blanditiis.</p>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><i class="fa-solid fa-drumstick-bite"></i> <span class="text">Dieta</span></h2>
+                <p class="text card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate illo, non tempore dolores sequi totam maiores similique aspernatur odit, esse incidunt. Tempora quidem id laudantium quibusdam esse numquam! Labore, cupiditate.</p>
             </div>
         </section>
-
-        <button class="button" onclick="pageUp()"><i class="fa-solid fa-angle-up"></i></button>
-
     </article>
-
-    <script src="../js/animal.js"></script>
-    <script src="../js/animal-swiper.js"></script>
-
+    <!-- FOOTER -->
+    <article class="article">
+        <footer class="footer">
+            <section class="footer-content">
+                <p class="text footer-text">UNCO 2023 | Hecho con ❤️</p>
+                <button onclick="focusHeader()"><i class="button footer-mid-icon fa-solid fa-paw"></i></button>
+                <section class="footer-media">
+                    <a href="https://github.com/facundoMunoz/laboratorio-programacion">
+                        <i class="footer-icon fa-brands fa-github"></i></a>
+                    <a href="https://www.fi.uncoma.edu.ar/">
+                        <i class="footer-icon fa-solid fa-building-columns"></i></a>
+                </section>
+            </section>
+        </footer>
+    </article>
+    <!-- SCRIPTS -->
+    <script src="../js/focusButtons.js"></script>
 </body>
 
 </html>

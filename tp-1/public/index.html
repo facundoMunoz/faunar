@@ -5,49 +5,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/230404f521.js" crossorigin="anonymous"></script>
-    <!-- STYLES -->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>FaunAr: Inicio</title>
+    <title>FaunAr: Home</title>
 </head>
 
 <body>
-
     <!-- HEADER -->
-    <header class="header">
-
-        <!-- BACKGROUND -->
-        <video autoplay muted loop class="background" src="assets/media/videofondo.mp4"></video>
-
-        <!-- PRESENTATION -->
-        <article class="presentation">
-            <h1 class="title"><i onclick="pageDown()" class="fa-solid fa-paw"></i> Faun<span>Ar</span></h1>
-        </article>
-
-        <!-- NAVBAR -->
+    <article id="header" class="article">
+        <video class="header-bg" src="assets/media/bg-video.mp4" autoplay muted loop></video>
         <nav class="navbar">
-            <a class="text local-link" onclick="pageUp()">INICIO</a>
-            <a class="text local-link" onclick="pageDown()">ANIMALES</a>
-        </nav>
-
-        <a class="button" onclick="pageDown()"><i class="fa-solid fa-angle-down"></i></a>
-
-    </header>
-
-    <!-- ANIMALS -->
-    <article id="animals" class="animals">
-        <h2 class="text subtitle">Nuestros animales</h2>
-        <section class="container card__container swiper">
-            <div class="swiper-wrapper">
+            <div class="navbar-left">
+                <button class="button" onclick="reload()"><i class="navbar-icon fa-solid fa-paw"></i></button>
             </div>
-        </section>
-        <a class="button" onclick="pageUp()"><i class="fa-solid fa-angle-up"></i></a>
-        <a class="card__button" href="assets/html/form.html">Agregar animal</a>
+            <div class="navbar-right">
+                <button class="text button navbar-link" onclick="focusAnimals()">Animales</button>
+                <button class="text button navbar-link" onclick="focusAbout()">Acerca de</button>
+                <a href="assets/html/addAnimal.html"><i class="navbar-icon fa-regular fa-circle-user"></i></a>
+            </div>
+        </nav>
+        <header class="header">
+            <h2 class="text subtitle">descubrí la</h2>
+            <h1 class="text title">fauna argentina</h1>
+            <p class="text header-text">
+                <span>Recopilamos información de los animales que habitan</span>
+                <span>nuestro país para que conozcas todas sus características.</span>
+            </p>
+            <button class="text button header-button" onclick="focusAnimals()">Ver animales</button>
+        </header>
     </article>
-
-    <!-- SWIPER -->
-    <script src="assets/js/main.js"></script>
-
+    <!-- ANIMALS -->
+    <article id="animals" class="article animals-article">
+        <h2 class="text animals-title">Nuestros animales</h2>
+        <section id="animal-cards" class="animal-cards">
+        </section>
+        <button class="show-more-btn" onclick="loadMoreAnimals()"><i
+                class="show-more-icon fa-solid fa-circle-chevron-down"></i></button>
+    </article>
+    <!-- ABOUT -->
+    <article id="about" class="article about-article">
+        <section class="about">
+            <section class="about-info">
+                <h3 class="text about-small-text">ACERCA DE</h3>
+                <h2 class="text about-title">Más de 10 fascinantes animales para conocer.</h2>
+                <p class="text about-text">Esta página forma parte de los proyectos correspondientes
+                    a la materia de Laboratorio de Programación para la Licenciatura en Ciencias de la
+                    Computación, su propósito fuera de la información
+                    es reflejar conocimientos en HTML, CSS, Javascript y NodeJS.
+                </p>
+            </section>
+            <section class="about-images">
+                <section class="about-image about-image-one"></section>
+                <section class="about-image about-image-two"></section>
+                <section class="about-image about-image-three"></section>
+            </section>
+        </section>
+    </article>
+    <!-- FOOTER -->
+    <article class="article">
+        <footer class="footer">
+            <section class="footer-content">
+                <p class="text footer-text">UNCO 2023 | Hecho con ❤️</p>
+                <button onclick="focusHeader()"><i class="button footer-mid-icon fa-solid fa-paw"></i></button>
+                <section class="footer-media">
+                    <a href="https://github.com/facundoMunoz/laboratorio-programacion">
+                        <i class="footer-icon fa-brands fa-github"></i></a>
+                    <a href="https://www.fi.uncoma.edu.ar/">
+                        <i class="footer-icon fa-solid fa-building-columns"></i></a>
+                </section>
+            </section>
+        </footer>
+    </article>
+    <!-- SCRIPTS -->
+    <script src="assets/js/animals.js"></script>
+    <script src="assets/js/focusButtons.js"></script>
 </body>
 
 </html>

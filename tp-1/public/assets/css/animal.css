@@ -1,131 +1,128 @@
 /* HEADER */
-.background-back {
-    filter: brightness(0.7) blur(2px);
-    position: fixed;
-    object-fit: cover;
-    height: 100%;
+.header {
+    background-color: darkslategrey;
+    min-height: 660px;
     width: 100%;
 }
 
-.background-front {
-    filter: brightness(0.6);
-    object-fit: cover;
-    position: fixed;
-    height: 100%;
-    width: 100%;
+.arrow-button {
+    font-size: 50px;
+    color: white;
 }
 
-.background-animal {
-    filter: brightness(0.9);
-    object-fit: cover;
-    position: fixed;
-    height: 100%;
-    width: 100%;
+.arrow-button-down {
+    margin-left: 200px;
+    margin-top: 10px;
+    font-size: 50px;
+    color: white;
 }
 
-.animal-id {
-    background-color: var(--color-transparent-black);
-    border-radius: 7px;
-    position: fixed;
-    width: 300px;
-    height: 70%;
-    bottom: 0;
+.animal {
+    max-width: 1000px;
+    margin-top: 60px;
+    width: 80%;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
 }
 
-.animal-id h2 {
-    color: var(--color-transparent-white);
-    font-family: Helvetica;
-    position: absolute;
+.animal-main {
+    margin-top: 50px;
+    min-width: 400px;
+    width: 400px;
+}
+
+.scientific-name {
+    color: lightgoldenrodyellow;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.animal-name {
+    font-weight: normal;
     font-size: 80px;
-    top: 0;
+    color: white;
 }
 
-.fog-img {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
+.animal-text {
+    color: lightgoldenrodyellow;
+    font-size: 18px;
 }
 
-.fog-1 {
-    background: url("../media/backgrounds/fog-1.png") repeat-x;
-    background-size: 200% 100%;
-    background-position: 0 bottom;
-    animation: marquee 15s linear infinite;
+.extinction {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
 }
 
-.fog-2 {
-    background: url("../media/backgrounds/fog-2.png") repeat-x;
-    background-size: 200% 100%;
-    background-position: 0 bottom;
-    animation: marquee 20s linear infinite;
+.danger-icon {
+    color: orange;
 }
 
-@keyframes marquee {
-    0% {
-        background-position: -200% bottom;
-    }
-
-    100% {
-        background-position: 0 bottom;
-    }
-}
-
-/* CARDS */
-.cards {
-    background-color: var(--color-transparent-black);
-    height: max(100vh, 600px);
-    width: max(100vw, 400px);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.feature-card {
-    backdrop-filter: blur(10px);
-    transition: all 0.5s ease;
-    position: relative;
-    border-radius: 30px;
-    height: 450px;
+.animal-images {
+    min-width: 400px;
+    height: 500px;
     width: 350px;
+    gap: 10px;
     display: flex;
-    overflow: hidden;
     align-items: center;
     flex-direction: column;
-    justify-content: flex-start;
 }
 
-.feature-card p {
-    margin: 20px 20px;
-}
-
-.feature-header {
-    margin-top: 30px;
-}
-
-.feature-cards {
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-}
-
-/* MOVE ANIMALS */
-.buttons {
-    position: relative;
-    height: 40%;
+.animal-image {
+    background-image: url("../media/backgrounds/2.jpg");
+    background-size: cover;
+    border-radius: 5px;
+    height: 500px;
     width: 100%;
+}
+
+.buttons {
+    gap: 20px;
     display: flex;
-    align-items: center;
+}
+
+/* INFO */
+.info-cards {
+    margin-bottom: 150px;
+    max-width: 1100px;
+    width: 80%;
+    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
-.button-animal {
+.card {
+    background-color: darkslategrey;
+    border-radius: 5px;
     position: relative;
-    bottom: 0;
+    height: 400px;
+    width: 330px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-title {
+    font-weight: normal;
+    font-size: 27px;
+    margin: 30px 0;
+    color: white;
+}
+
+.card-text {
+    font-size: 17px;
+    padding: 0 30px;
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .header {
+        height: 1200px;
+    }
+
+    .animal {
+        justify-content: center;
+    }
 }
