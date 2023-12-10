@@ -4,11 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaunAr: New animal</title>
+    <script src="https://kit.fontawesome.com/230404f521.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/addAnimal.css">
+    <title>FaunAr: Nuevo animal</title>
 </head>
 
 <body>
-
+    <!-- HEADER -->
+    <article id="header" class="article">
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="../../index.html"><i class="navbar-icon fa-solid fa-paw"></i></a>
+            </div>
+            <div class="navbar-right">
+                <button class="button" onclick="reload()"><i class="navbar-icon fa-regular fa-circle-user"></i></button>
+            </div>
+        </nav>
+        <header class="header">
+            <h1 class="text form-title">FaunAr: Añadir animal</h1>
+            <form class="form">
+                <div class="form-box">
+                    <i class="icon fa-solid fa-paw"></i>
+                    <input id="name" class="input-box" type="text" placeholder="Nombre">
+                </div>
+                <div class="form-box">
+                    <i class="icon fa-solid fa-flask"></i>
+                    <input id="scientificName" class="input-box" type="text" placeholder="Nombre científico">
+                </div>
+                <div class="form-box">
+                    <i class="icon fa-solid fa-comment"></i>
+                    <textarea id="description" class="input-box large-input" placeholder="Descripción"></textarea>
+                </div>
+                <div class="form-box">
+                    <i class="icon fa-solid fa-dumbbell"></i>
+                    <textarea id="weightHeight" class="input-box large-input" placeholder="Peso / Altura"></textarea>
+                </div>
+                <div class="form-box">
+                    <i class="icon fa-solid fa-location-dot"></i>
+                    <textarea id="zones" class="input-box large-input" placeholder="Zonas"></textarea>
+                </div>
+                <div class="form-box">
+                    <i class="icon fa-solid fa-drumstick-bite"></i>
+                    <textarea id="diet" class="input-box large-input" placeholder="Dieta"></textarea>
+                </div>
+                <div class="form-check">
+                    <label>
+                        <input id="extinction" class="checkbox" type="checkbox"> <span class="text checkbox-text">En
+                            peligro de extinción</span>
+                    </label>
+                </div>
+                <div class="form-box">
+                    <i class="icon fa-solid fa-lock"></i>
+                    <input id="password" class="input-box" type="password" placeholder="Contraseña">
+                </div>
+            </form>
+            <button class="button submit-button" type="submit" onclick="addAnimal()">Añadir</button>
+        </header>
+    </article>
+    <!-- FOOTER -->
+    <article class="article">
+        <footer class="footer">
+            <section class="footer-content">
+                <p class="text footer-text">UNCO 2023 | Hecho con ❤️</p>
+                <button onclick="focusHeader()"><i class="button footer-mid-icon fa-solid fa-paw"></i></button>
+                <section class="footer-media">
+                    <a href="https://github.com/facundoMunoz/laboratorio-programacion">
+                        <i class="footer-icon fa-brands fa-github"></i></a>
+                    <a href="https://www.fi.uncoma.edu.ar/">
+                        <i class="footer-icon fa-solid fa-building-columns"></i></a>
+                </section>
+            </section>
+        </footer>
+    </article>
+    <!-- SCRIPTS -->
+    <script src="../js/focusButtons.js"></script>
+    <script src="../js/newAnimal.js"></script>
 </body>
 
 </html>

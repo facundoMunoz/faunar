@@ -1,20 +1,20 @@
 /* --- Configuración del Servidor --- */
 
-//trae la libreria "express" para hacer un servidor web
+// Trae la libreria "express" para hacer un servidor web
 const express = require("express");
 const path = require("path");
 const fs = require("fs"); //para obtener json y parsear
 
-//instancia
+// Instancia
 const app = express();
 const port = 3000;
 
-//abre el servidor
+// Abre el servidor
 app.listen(port, () => {
     console.log("Server running on port ", port);
 });
 
-//hace publico el folder de la pagina
+// Hace publico el folder de la pagina
 app.use(express.static('public'));
 
 app.use(express.json());
@@ -108,7 +108,7 @@ app.get("/api/storage/:name", (req, res) => {
   res.sendFile(path.join(__dirname + "/storage/"+req.params.name));
 });
 
-//devuelve json con infoAnimales, storage es privado nadie puede ver eso afuera del sv sin poner el path completo
+// Devuelve json con infoAnimales, storage es privado nadie puede ver eso afuera del sv sin poner el path completo
 function obtenerJson() {
   try {
     const jsonString = fs.readFileSync("storage/infoAnimales.json", "utf8");
