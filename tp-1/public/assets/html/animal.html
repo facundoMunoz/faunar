@@ -38,8 +38,10 @@
                 <section class="animal-images">
                     <section class="animal-image"></section>
                     <div class="buttons">
-                        <button class="button arrow-button"><i class="fa-solid fa-circle-chevron-left"></i></button>
-                        <button class="button arrow-button"><i class="fa-solid fa-circle-chevron-right"></i></button>
+                        <button class="button arrow-button" onclick="previousAnimal()"><i
+                                class="fa-solid fa-circle-chevron-left"></i></button>
+                        <button class="button arrow-button" onclick="nextAnimal()"><i
+                                class="fa-solid fa-circle-chevron-right"></i></button>
                     </div>
                 </section>
             </section>
@@ -51,15 +53,21 @@
         <section id="info-cards" class="info-cards">
             <div class="card">
                 <h2 class="card-title"><i class="fa-solid fa-dumbbell"></i> <span class="text">Peso / Tamaño</span></h2>
-                <p class="text card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi veniam sed eligendi harum, assumenda aperiam enim illo pariatur non veritatis cum eum quidem architecto fugiat possimus? Quod tempore repudiandae blanditiis!</p>
+                <p class="text card-text weight-height-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Animi veniam sed eligendi harum, assumenda aperiam enim illo pariatur non veritatis cum eum quidem
+                    architecto fugiat possimus? Quod tempore repudiandae blanditiis!</p>
             </div>
             <div class="card">
                 <h2 class="card-title"><i class="fa-solid fa-location-dot"></i> <span class="text">Zonas</span></h2>
-                <p class="text card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem qui deleniti facere nemo aliquam sint consequuntur accusamus veritatis ipsa voluptatibus ullam ab sunt suscipit necessitatibus quia assumenda consequatur, cum blanditiis.</p>
+                <p class="text card-text zones-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Exercitationem qui deleniti facere nemo aliquam sint consequuntur accusamus veritatis ipsa
+                    voluptatibus ullam ab sunt suscipit necessitatibus quia assumenda consequatur, cum blanditiis.</p>
             </div>
             <div class="card">
                 <h2 class="card-title"><i class="fa-solid fa-drumstick-bite"></i> <span class="text">Dieta</span></h2>
-                <p class="text card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate illo, non tempore dolores sequi totam maiores similique aspernatur odit, esse incidunt. Tempora quidem id laudantium quibusdam esse numquam! Labore, cupiditate.</p>
+                <p class="text card-text diet-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+                    illo, non tempore dolores sequi totam maiores similique aspernatur odit, esse incidunt. Tempora
+                    quidem id laudantium quibusdam esse numquam! Labore, cupiditate.</p>
             </div>
         </section>
     </article>
@@ -80,6 +88,7 @@
     </article>
     <!-- SCRIPTS -->
     <script src="../js/focusButtons.js"></script>
+    <script src="../js/animal.js"></script>
 </body>
 
 </html>

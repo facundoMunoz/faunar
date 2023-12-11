@@ -296,6 +296,10 @@
     font-size: 30px;
 }
 
+.hidden {
+    display: none;
+}
+
 @media (max-width: 1000px) {
     .about {
         justify-content: center;

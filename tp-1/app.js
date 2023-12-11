@@ -3,134 +3,106 @@
 // Trae la libreria "express" para hacer un servidor web
 const express = require("express");
 const path = require("path");
-const fs = require("fs"); //para obtener json y parsear
+const fs = require("fs"); // Para obtener json y parsear
 
 // Instancia
 const app = express();
 const port = 3000;
 
+// Variables globales para reutilizacion
+let json;
+
 // Abre el servidor
 app.listen(port, () => {
-    console.log("Server running on port ", port);
+  console.log("Server running on port ", port);
+  json = obtenerJson();
 });
 
 // Hace publico el folder de la pagina
 app.use(express.static('public'));
 
+// Para mostrar formateado un json en navegador
 app.use(express.json());
 app.set('json spaces', 2);
 
-// Root incial, retorna el index
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname + "/index.html"));
-});
-
-app.get("/informacion", (req, res) => {
-  const contenido = obtenerJson();
-  console.log(contenido);
-  res.json(contenido);
-});
-
-
-/* --- Endpoint POST ANIMAL api/animales --- */
-
+/* --- Endpoint POST ANIMAL api/animales (unica post)--- */
 app.post("/api/animales", (req, res) => {
   const newAnimal = req.body;
-  const animales = obtenerJson();
+  const animales = json;
 
-  const lastAnimal = Object.keys(animales).length + 1;
-  animales[lastAnimal] = newAnimal;
+  const ultimoAnimal = Object.keys(json).length + 1;
+  animales[ultimoAnimal] = newAnimal;
 
-  console.log(animales);
-  
   fs.writeFile("storage/infoAnimales.json", JSON.stringify(animales), (err) => {
-    if (err) 
+    if (err)
       console.log(err);
     else
-      console.log("Nueva informacion añadida.");
+      console.log("Nuevo archivo json con la informacion añadida.");
+    json = animales;
+    console.log(json);
   });
 
   res.status(201).send();
   //res.json(animales);
 });
 
+/** --- Endpoint PUT modifica animal (unicu put) --- */
+app.put("/api/animales/:id", (req, res) => {
+  const animalId = req.params.id;
+  const infoNueva = req.body;
 
+  console.log(json);
 
-/* --- Endpoint GET ANIMAL api/animales/id --- */
+  if (animalId > 0 && animalId <= Object.keys(json).length) {
+    json[animalId] = infoNueva;
+    fs.writeFile("storage/infoAnimales.json", JSON.stringify(json), (err) => {
+      if (err)
+        console.log(err);
+      else {
+        res.status(200).send("Animal modificado exitosamente.");
+        console.log(json);
+      }
 
-// Obtiene el html del animal segun su id
-app.get("/api/animales/:id", (req, res) => {
-  const json = obtenerJson();
-  animalsAmount = Object.keys(json).length;
-  
-  // Comprobamos no exceder la cantidad de animales existentes en el json, de lo contrario devuelve 404.
-  if (req.params.id <= animalsAmount) 
-    res.sendFile(path.join(__dirname + "/public/assets/html/animal.html"));
-  else
-    //res.status(404).send("404 Not Found: Animal no existe."); 
-    res.status(404).send(); // Hay 2 opciones, retornar el mensaje del navegador, o la de arriba que es el msj propio.
+    });
+
+  } else {
+    res.status(404).send("404 Not Found: Animal solicitado no existe.");
+  }
 });
 
+
+/* --- Endpoints GETS --- */
+
+// DEVUELVE JSON CON UN UNICO ANIMAL SOLICITADO SEGUN :id
 app.get("/api/animal/:id", (req, res) => {
-  const json = obtenerJson();
-  animalsAmount = Object.keys(json).length;
-  
   // Comprobamos no exceder la cantidad de animales existentes en el json, de lo contrario devuelve 404.
-  if (req.params.id <= animalsAmount) 
+  if (req.params.id <= Object.keys(json).length)
     res.json(json[req.params.id]);
   else
-    //res.status(404).send("404 Not Found: Animal no existe."); 
-    res.status(404).send(); // Hay 2 opciones, retornar el mensaje del navegador, o la de arriba que es el msj propio.
+    res.status(404).send("404 Not Found: Animal solicitado no existe.");
 });
 
-// Obtiene el css requerido
-app.get("/api/css/:name", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/assets/css/"+req.params.name));
-});
-
-// Devuelve el js requerido
-app.get("/api/js/:name", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/assets/js/"+req.params.name));
-});
-
-// Obtiene el background requerido
-app.get("/api/media/backgrounds/:name", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/assets/media/backgrounds/"+req.params.name));
-});
-
-// Obtiene la img del animal requerido
-app.get("/api/media/animals/:id", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/assets/media/animals/"+req.params.id));
-});
-
-// Obtiene el json requerido
-app.get("/api/storage/:name", (req, res) => {
-  res.sendFile(path.join(__dirname + "/storage/"+req.params.name));
-});
-
-// Devuelve json con infoAnimales, storage es privado nadie puede ver eso afuera del sv sin poner el path completo
 function obtenerJson() {
   try {
-    const jsonString = fs.readFileSync("storage/infoAnimales.json", "utf8");
+    const jsonString = fs.readFileSync("storage/animales.json", "utf8");
     const animals = JSON.parse(jsonString);
     return animals;
-  } 
+  }
   catch (err) {
     console.log("Error reading or parsing JSON file:", err);
-    return null; // Puedes manejar errores de otra manera si lo deseas
+    throw err;
   }
 }
 
+app.get("/api/animals/amount", (req, res) => {
+  res.json({ amount: Object.keys(json).length });
+});
 
-/* --- Endpoint GET ANIMALES api/animales?cantidad=n&from=m --- */
+
+/* --- Endpoint GET ANIMALES QUERY solicitada api/animales?cantidad=n&from=m --- */
 
 app.get("/api/animales", (req, res) => {
-  const json = obtenerJson();
-  animalsAmount = Object.keys(json).length;
-  
-  //console.log(req.query.cantidad);
-  //console.log(req.query.from);
-  
+
   let inicio = Number(req.query.from);
   let cantElementos = Number(req.query.cantidad);
 
@@ -138,21 +110,20 @@ app.get("/api/animales", (req, res) => {
   let cantIteraciones;
 
   // Comprobamos las iteraciones de acuerdo al inicio y la cantidad disponble de animales del json. 
-  if (cantElementos > (animalsAmount - inicio)) 
-    cantIteraciones = (animalsAmount - inicio); // Si estoy solicitando mas animales de lo debido, obtengo todos los que haya
-  else 
+  if (cantElementos > (Object.keys(json).length - inicio))
+    cantIteraciones = (Object.keys(json).length - inicio); // Si estoy solicitando mas animales de lo debido, obtengo todos los que haya
+  else
     cantIteraciones = cantElementos; // Sino, obtengo los que se solicitan sin problemas.
- 
-  for (let i = 1; i <= cantIteraciones; i++) {  
+
+  for (let i = 1; i <= cantIteraciones; i++) {
     animal = {
-                nombreAnimal: json[inicio + i].nombreAnimal, 
-                descripcion: json[inicio + i].descripcion,
-                zonas: json[inicio + i].zonas,
-                pesoTamanio: json[inicio + i].pesoTamanio,
-                dieta: json[inicio + i].dieta
-              };
+      nombreAnimal: json[inicio + i].nombreAnimal,
+      descripcion: json[inicio + i].descripcion,
+      zonas: json[inicio + i].zonas,
+      pesoTamanio: json[inicio + i].pesoTamanio,
+      dieta: json[inicio + i].dieta
+    };
     animales.push(animal);
   }
-
   res.json(animales);
 });

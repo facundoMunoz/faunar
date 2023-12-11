@@ -1,25 +1,39 @@
-loadMoreAnimals = () => {
-    // Add 3 more animals
-    for (let newAnimal = 1; newAnimal <= 3; newAnimal++) {
+let currentId = 1;
+
+const createAnimalCard = () => fetch("/api/animal/" + currentId)
+    .then((response) => response.json())
+    .then((animal) => {
         // Elements
-        let animal = document.createElement("a");
+        let animalCard = document.createElement("a");
         let name = document.createElement("h3");
         // Animal
-        animal.classList.add("animal-card");
+        animalCard.classList.add("animal-card");
         // Image
-        // TODO: change for image url
-        animal.style.backgroundImage = "url('assets/media/backgrounds/" + newAnimal + ".jpg')";
+        animalCard.style.backgroundImage = "url('assets/media/backgrounds/" + animal.id + ".jpg')";
         // Link
-        animal.setAttribute("href", "assets/html/animal.html#" + newAnimal);
+        animalCard.setAttribute("href", "assets/html/animal.html#" + animal.id);
         // Name
         name.classList.add("text");
         name.classList.add("card-name");
-        // TODO: change for name
-        name.innerHTML = "Nombre animal";
+        name.innerHTML = animal.name;
 
-        animal.appendChild(name);
-        document.querySelector(".animal-cards").appendChild(animal);
-    }
-};
+        animalCard.appendChild(name);
+        document.querySelector(".animal-cards").appendChild(animalCard);
+    });
+
+const loadMoreAnimals = () => fetch("/api/animals/amount")
+    .then((response) => response.json())
+    .then((amount) => {
+        // Add 3 more animals
+        lastAnimalId = currentId + 2;
+        while (currentId <= lastAnimalId) {
+            createAnimalCard();
+            currentId++;
+            if (currentId > amount.amount) {
+                document.querySelector(".show-more-btn").classList.add("hidden");
+                currentId = lastAnimalId + 1;
+            }
+        }
+    });
 
 loadMoreAnimals();
