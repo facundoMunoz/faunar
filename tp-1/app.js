@@ -33,7 +33,7 @@ app.post("/api/animales", (req, res) => {
   const ultimoAnimal = Object.keys(json).length + 1;
   animales[ultimoAnimal] = newAnimal;
 
-  fs.writeFile("storage/infoAnimales.json", JSON.stringify(animales), (err) => {
+  fs.writeFile("storage/animales.json", JSON.stringify(animales), (err) => {
     if (err)
       console.log(err);
     else
@@ -55,7 +55,7 @@ app.put("/api/animales/:id", (req, res) => {
 
   if (animalId > 0 && animalId <= Object.keys(json).length) {
     json[animalId] = infoNueva;
-    fs.writeFile("storage/infoAnimales.json", JSON.stringify(json), (err) => {
+    fs.writeFile("storage/animales.json", JSON.stringify(json), (err) => {
       if (err)
         console.log(err);
       else {

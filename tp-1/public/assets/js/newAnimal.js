@@ -11,7 +11,7 @@ addAnimal = () => {
         extinction: document.getElementById('extinction').checked,
     };
 
-    fetch('http://localhost:3000/api/animales', {
+    fetch('/api/animales', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,11 +20,15 @@ addAnimal = () => {
     })
         .then(function (res) {
             if (res.ok) {
-                console.log('POST completado.');
+                document.querySelector(".success-text").classList.remove("hidden");
+                document.querySelector(".fail-text").classList.add("hidden");
                 return res;
             }
-            else
+            else {
+                document.querySelector(".success-text").classList.add("hidden");
+                document.querySelector(".fail-text").classList.remove("hidden");
                 throw new Error('POST fallido.');
+            }
         })
         .catch(function (error) {
             console.log(error);
