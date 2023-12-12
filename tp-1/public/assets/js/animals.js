@@ -32,7 +32,7 @@ const createAnimalCard = async () => {
 
 const loadMoreAnimals = async () => {
     try {
-        const response = await fetch("/api/cantidadAnimales");
+        const response = await fetch("/api/cantidadAnimales/");
         const amount = await response.json();
 
         // Add 3 more animals
@@ -40,7 +40,7 @@ const loadMoreAnimals = async () => {
         while (currentId <= lastAnimalId) {
             await createAnimalCard();
             currentId++;
-            if (currentId > amount.cantidad) {
+            if (currentId > amount.amount) {
                 document.querySelector(".show-more-btn").classList.add("hidden");
                 currentId = lastAnimalId + 1;
             }
