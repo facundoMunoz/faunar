@@ -46,19 +46,23 @@ app.post("/api/agregarAnimal", async (req, res) => {
 
 /** --- Endpoint PUT modifica animal (unicu put) --- */
 app.put("/api/modificarAnimal/:id", async (req, res) => {
-  const animalId = req.params.id;
+  const animalId = req.params.id - 1;
   const infoNueva = req.body;
 
   try {
       // Obtiene el animal de manera asíncrona
-      const animalExistente = await servicios.obtenerAnimales();
-
+      const jsonAnimales = await servicios.obtenerAnimales();
+      const animalExistente = jsonAnimales[animalId];
+      
+      //Si es negativo o excede el indice el valor que toma es undefined y no ingresa. 
+      //Si no es undefined (encuentra el animal por el id), realiza la actualizacion. 
       if (animalExistente) {
           // Fusiona el animal existente con la información nueva
           const animalModificado = { ...animalExistente, ...infoNueva };
+          jsonAnimales[animalId] = animalModificado;
 
           // Modifica el animal en el archivo JSON de manera asíncrona
-          await promesa.writeFile("storage/animales.json", JSON.stringify(animalModificado, null, 2), 'utf8');
+          await promesa.writeFile("storage/animales.json", JSON.stringify(jsonAnimales, null, 2), 'utf8');
 
           res.status(200).send("Animal modificado exitosamente.");
       } else {
@@ -76,8 +80,8 @@ app.put("/api/modificarAnimal/:id", async (req, res) => {
 app.get("/api/animal/:id", async (req, res) => {
   const jsonAnimales = await servicios.obtenerAnimales();
   // Comprobamos no exceder la cantidad de animales existentes en el json, de lo contrario devuelve 404.
-  if (req.params.id <= Object.keys(jsonAnimales).length)
-    res.json(jsonAnimales[req.params.id]);
+  if ((req.params.id > 0) && (req.params.id <= Object.keys(jsonAnimales).length))
+    res.json(jsonAnimales[req.params.id - 1]);
   else
     res.status(404).send("404 Not Found: Animal solicitado no existe.");
 });
@@ -91,8 +95,8 @@ app.get("/api/cantidadAnimales/", async (req, res) => {
 
 /* --- Endpoint GET ANIMALES QUERY solicitada api/animales?cantidad=n&from=m --- */
 
-app.get("/api/devolverNAnimales", (req, res) => {
-
+app.get("/api/devolverNAnimales", async (req, res) => {
+  const jsonAnimales = await servicios.obtenerAnimales();
   let inicio = Number(req.query.from);
   let cantElementos = Number(req.query.cantidad);
 
@@ -100,20 +104,15 @@ app.get("/api/devolverNAnimales", (req, res) => {
   let cantIteraciones;
 
   // Comprobamos las iteraciones de acuerdo al inicio y la cantidad disponble de animales del json. 
-  if (cantElementos > (Object.keys(json).length - inicio))
-    cantIteraciones = (Object.keys(json).length - inicio); // Si estoy solicitando mas animales de lo debido, obtengo todos los que haya
+  if (cantElementos > (Object.keys(jsonAnimales).length - inicio))
+    cantIteraciones = (Object.keys(jsonAnimales).length - inicio); // Si estoy solicitando mas animales de lo debido, obtengo todos los que haya
   else
     cantIteraciones = cantElementos; // Sino, obtengo los que se solicitan sin problemas.
 
-  for (let i = 1; i <= cantIteraciones; i++) {
-    animal = {
-      nombreAnimal: json[inicio + i].nombreAnimal,
-      descripcion: json[inicio + i].descripcion,
-      zonas: json[inicio + i].zonas,
-      pesoTamanio: json[inicio + i].pesoTamanio,
-      dieta: json[inicio + i].dieta
-    };
+  for (let i = 0; i < cantIteraciones; i++) {
+    animal = jsonAnimales[inicio + i];
     animales.push(animal);
   }
+
   res.json(animales);
 });
