@@ -85,7 +85,7 @@ app.get("/api/animal/:id", async (req, res) => {
 
 app.get("/api/cantidadAnimales/", async (req, res) => {
   const jsonAnimales = await servicios.obtenerAnimales();
-  res.json({ cantidad: Object.keys(jsonAnimales).length });
+  res.json({ amount: Object.keys(jsonAnimales).length });
 });
 
 
