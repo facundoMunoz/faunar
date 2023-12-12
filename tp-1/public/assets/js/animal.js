@@ -2,9 +2,11 @@ let currentUrl = window.location.href;
 let currentId = currentUrl.substring(currentUrl.lastIndexOf('#') + 1, currentUrl.length);
 
 // Load data
-const getAnimal = () => fetch("/api/animal/" + currentId)
-    .then((response) => response.json())
-    .then((animal) => {
+const getAnimal = async () => {
+    try {
+        const response = await fetch("/api/animal/" + currentId);
+        const animal = await response.json();
+
         // Data
         document.querySelector(".animal-name").innerHTML = animal.name;
         document.querySelector(".scientific-name").innerHTML = animal.scientificName;
@@ -21,31 +23,43 @@ const getAnimal = () => fetch("/api/animal/" + currentId)
 
         // Animal image
         document.querySelector(".animal-image").style.backgroundImage = "url(../media/backgrounds/" + currentId + ".jpg)";
-    });
+    } catch (error) {
+        console.error('Error al obtener el animal:', error);
+    }
+};
 
 // Switch animal
-const previousAnimal = () => fetch("/api/animals/amount")
-    .then((response) => response.json())
-    .then((amount) => {
-        if (currentId <= 1) {
-            currentId = amount.amount;
-        } else {
-            currentId--;
-        }
-        window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('#') + 1) + currentId;
-        getAnimal();
-    });
+const getAnimalsAmount = async () => {
+    try {
+        const response = await fetch("/api/cantidadAnimales/");
+        const amount = await response.json();
+        return amount.amount;
+    } catch (error) {
+        console.error('Error al obtener la cantidad de animales:', error);
+        return 0;
+    }
+};
 
-const nextAnimal = () => fetch("/api/animals/amount")
-    .then((response) => response.json())
-    .then((amount) => {
-        if (currentId >= amount.amount) {
-            currentId = 1;
-        } else {
-            currentId++;
-        }
-        window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('#') + 1) + currentId;
-        getAnimal();
-    });
+const previousAnimal = async () => {
+    const amount = await getAnimalsAmount();
+    if (currentId <= 1) {
+        currentId = amount;
+    } else {
+        currentId--;
+    }
+    window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('#') + 1) + currentId;
+    await getAnimal();
+};
+
+const nextAnimal = async () => {
+    const amount = await getAnimalsAmount();
+    if (currentId >= amount) {
+        currentId = 1;
+    } else {
+        currentId++;
+    }
+    window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('#') + 1) + currentId;
+    await getAnimal();
+};
 
 getAnimal();
