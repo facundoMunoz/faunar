@@ -1,11 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
+import Onboarding from './app/Components/Onboarding';
 
-export default function App() {
+export default App = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.tittle}>Faunar</Text>
-      <StatusBar style="auto" />
+      <Onboarding />
+      <StatusBar translucent />
     </View>
   );
 }
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: StatusBar.currentHeight
   },
   tittle: {
     fontSize: 30,
