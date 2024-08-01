@@ -12,7 +12,9 @@ const app = express();
 const port = 3000;
 
 // Abre el servidor
-app.listen(port, () => {
+// Para probar en una red local reemplazar ip por la ip del host
+// TODO: tomar la ip del host automaticamente
+app.listen(port, "ip" || "localhost", () => {
   console.log("Server running on port ", port);
 });
 

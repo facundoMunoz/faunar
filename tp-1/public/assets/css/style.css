@@ -311,6 +311,19 @@
 }
 
 @media (max-width: 600px) {
+    .title {
+        font-size: 50px;
+    }
+    
+    .subtitle {
+        padding-bottom: 15px;
+        font-size: 32px;
+    }
+
+    .header-text {
+        display: none;
+    }
+
     .footer {
         height: 200px;
     }
