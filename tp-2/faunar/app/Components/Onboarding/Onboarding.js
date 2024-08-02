@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native"
-import animalesOriginal from "../testing-storage/animales-original";
-import OnboardingItem from "./OnboardingItem";
+import animalesOriginal from "../../testing-storage/animales-original";
+import OnboardingItem from "../OnboardingItem/OnboardingItem";
 
 export default Onboarding = () => {
     return (

@@ -13,10 +13,8 @@ export default OnboardingItem = ({ item }) => {
 
     return (
         <View style={[styles.container, { height, width }, { backgroundColor: color }]}>
-            <View style={[styles.container]}>
-                <Text>{item.id}</Text>
-                <Text>{item.name}</Text>
-            </View>
+            <Text>{item.id}</Text>
+            <Text>{item.name}</Text>
         </View>
     );
 }
