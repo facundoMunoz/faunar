@@ -6,6 +6,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 // Screens
 import Home from '../../Pages/Home/Home';
 import AnimalList from '../../Pages/AnimalList/AnimalList';
+import AddAnimal from '../../Pages/AddAnimal/AddAnimal';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +29,14 @@ function MyTabs() {
                 name="Animals"
                 component={AnimalList}
                 options={{
-                    tabBarIcon: ({ size, color }) => { return <MaterialCommunityIcons name="paw" size={size + 10} color={color} /> }
+                    tabBarIcon: ({ size, color }) => { return <MaterialCommunityIcons name="paw" size={size + 18} color={color} /> }
+                }}
+            />
+            <Tab.Screen
+                name="AddAnimal"
+                component={AddAnimal}
+                options={{
+                    tabBarIcon: ({ size, color }) => { return <MaterialCommunityIcons name="plus-circle" size={size + 11} color={color} /> }
                 }}
             />
         </Tab.Navigator>
