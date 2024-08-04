@@ -1,15 +1,12 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
+  flatListContainer: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  tittle: {
-    fontSize: 30,
   }
 });
 
-export default styles;
+export default globalStyles;

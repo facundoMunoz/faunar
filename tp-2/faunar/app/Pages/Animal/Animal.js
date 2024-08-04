@@ -1,10 +1,14 @@
+import React from 'react';
 import { View, Text } from 'react-native';
-import styles from '../../Components/GlobalStyles/GlobalStyles';
+import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
 
-export default Animal = () => {
+export default Animal = ({ route }) => {
+
+  const { item } = route.params;
+
   return (
-    <View style={styles.container}>
-      <Text>Animal</Text>
+    <View style={globalStyles.container}>
+      <Text>{item.name}</Text>
     </View>
   );
 }
