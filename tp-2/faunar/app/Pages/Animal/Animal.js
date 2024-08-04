@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import styles from '../../Components/GlobalStyles/GlobalStyles';
 
-export default Home = () => {
+export default Animal = () => {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Text>Animal</Text>
     </View>
   );
 }

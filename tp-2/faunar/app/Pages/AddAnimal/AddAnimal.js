@@ -1,4 +1,5 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import styles from '../../Components/GlobalStyles/GlobalStyles';
 
 export default AddAnimal = () => {
   return (
@@ -7,15 +8,3 @@ export default AddAnimal = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  tittle: {
-    fontSize: 30,
-  }
-});

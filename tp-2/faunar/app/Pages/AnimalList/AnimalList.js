@@ -1,21 +1,22 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import styles from '../../Components/GlobalStyles/GlobalStyles';
 
 export default AnimalList = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <Text>Animals</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Animal")}
+        style={{
+          backgroundColor: "orange",
+          width: "50%"
+        }}
+      >
+        <Text style={{ fontSize: 15 }}>Animal</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  tittle: {
-    fontSize: 30,
-  }
-});
