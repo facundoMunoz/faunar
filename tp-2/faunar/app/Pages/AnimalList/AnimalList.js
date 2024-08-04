@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
+import styles from './Styles';
 
 export default AnimalList = () => {
 
@@ -73,18 +74,23 @@ export default AnimalList = () => {
   return (
     <View style={globalStyles.container}>
       <FlatList
-        style={{ flex: 1, width: "100%", paddingTop: 50 }}
+        style={styles.flatListContainer}
         data={animals}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => navigation.navigate("Animal", { item })}
-            style={{
+            style={[globalStyles.container,
+            {
               backgroundColor: "orange",
-              margin: 10,
-              padding: 10
-            }}
+              marginHorizontal: 10,
+              marginBottom: 15,
+              padding: 100,
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center"
+            }]}
           >
-            <Text style={{ fontSize: 15 }}>{item.name}</Text>
+            <Text style={{ fontSize: 15, position: "absolute", color: "white" }}>{item.name}</Text>
           </TouchableOpacity>
         )}
       />
