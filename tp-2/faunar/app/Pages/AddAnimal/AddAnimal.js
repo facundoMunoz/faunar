@@ -1,10 +1,18 @@
-import { View, Text } from 'react-native';
-import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
+import { View } from 'react-native';
+import styles from './Styles';
+import Input from '../../Components/Input/Input';
 
 export default AddAnimal = () => {
   return (
-    <View style={globalStyles.container}>
-      <Text>Add animal</Text>
+    <View style={styles.formContainer}>
+      <Input
+        leftIconName="paw"
+        placeholder="Nombre"
+      />
+      <Input
+        leftIconName="flask"
+        placeholder="Nombre científico"
+      />
     </View>
   );
 }

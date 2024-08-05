@@ -14,7 +14,7 @@ const port = 3000;
 // Abre el servidor
 // Para probar en una red local reemplazar ip por la ip del host
 // TODO: tomar la ip del host automaticamente
-app.listen(port, "ip" || "localhost", () => {
+app.listen(port, "localhost", () => {
   console.log("Server running on port ", port);
 });
 
