@@ -16,6 +16,9 @@ export default Input = props => {
                 onBlur={() => setFocused(false)}
                 selectionColor={'orange'}
                 placeholder={props.placeholder}
+                multiline={props.numLines > 1 ? true : false}
+                textAlignVertical={props.numLines > 1 ? "top" : "center"}
+                numberOfLines={props.numLines}
             />
         </View>
     );
