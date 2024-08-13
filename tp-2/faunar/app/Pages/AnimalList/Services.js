@@ -1,6 +1,4 @@
-import { IP, PORT } from "../../Constants/constants";
-
-const IP_ADDRESS = `${IP}:${PORT}`;
+import { IP_ADDRESS } from "../../Constants/constants";
 
 export const getAnimals = async (page, limit) => {
   try {
