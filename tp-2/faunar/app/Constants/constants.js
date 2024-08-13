@@ -1,6 +1,7 @@
 // Para que desde expo go haga el fetch, reemplazar por la ip propia del host server
-export const IP = "192.168.0.8";
-export const PORT = "3000";
+const IP = "192.168.0.8";
+const PORT = "3000";
+export const IP_ADDRESS = `${IP}:${PORT}`;
 
 export const ANIMALS_IMAGES = {
     default: require("../assets/images/default.png"),

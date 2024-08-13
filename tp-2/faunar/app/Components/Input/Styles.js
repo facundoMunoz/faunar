@@ -2,13 +2,16 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     inputContainer: {
-        marginBottom: 30,
+        marginBottom: 5,
         padding: 10,
         flexDirection: 'row',
         backgroundColor: 'white',
         borderRadius: 10,
         width: '90%',
         borderBottomWidth: 2
+    },
+    inputWithErrorContainer: {
+        marginBottom: 30
     },
     input: {
         fontSize: 15,
