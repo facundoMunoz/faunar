@@ -25,6 +25,13 @@ function MyStack() {
             <AnimalStack.Screen
                 name="Animal"
                 component={Animal}
+                options={({ route }) => ({
+                  title: route.params.item.name,
+                  headerStyle: {
+                    backgroundColor: 'orange',
+                  },
+                  headerTintColor: '#fff',
+                })}
             />
         </AnimalStack.Navigator>
     );
