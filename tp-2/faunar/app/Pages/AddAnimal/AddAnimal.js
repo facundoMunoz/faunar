@@ -1,30 +1,34 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   ScrollView,
   Keyboard,
   View,
   ActivityIndicator,
   Alert,
-} from 'react-native';
-import Input from '../../Components/Input/Input';
-import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
-import styles from './Styles';
-import { IP_ADDRESS } from '../../Constants/constants';
+} from "react-native";
+import Input from "../../Components/Input/Input";
+import PrimaryButton from "../../Components/PrimaryButton/PrimaryButton";
+import styles from "./Styles";
+import { IP_ADDRESS } from "../../Constants/constants";
+import { CheckBox } from "@rneui/themed";
 
 export default AddAnimal = () => {
   // Hooks
   const [inputsValues, setInputsValues] = useState({
-    name: '',
-    scientificName: '',
-    description: '',
-    weightHeight: '',
-    zones: '',
-    diet: '',
+    name: "",
+    scientificName: "",
+    description: "",
+    weightHeight: "",
+    zones: "",
+    diet: "",
   });
 
   const [inputsErrors, setInputsErrors] = useState({});
 
   const [requestRunning, setRequestRunning] = useState(false);
+
+  const [peligroExtincion, setPeligro] = useState(false);
+
 
   const validateForm = () => {
     // Ocultar el teclado al presionar boton "Guardar"
@@ -34,33 +38,33 @@ export default AddAnimal = () => {
 
     // Si es vacío o undefined
     if (!inputsValues.name) {
-      handleInputError('Ingrese el nombre del animal', 'name');
+      handleInputError("Ingrese el nombre del animal", "name");
       isValid = false;
     }
     if (!inputsValues.scientificName) {
       handleInputError(
-        'Ingrese el nombre científico del animal',
-        'scientificName'
+        "Ingrese el nombre científico del animal",
+        "scientificName"
       );
       isValid = false;
     }
     if (!inputsValues.description) {
       handleInputError(
-        'Ingrese una descripción sobre el animal',
-        'description'
+        "Ingrese una descripción sobre el animal",
+        "description"
       );
       isValid = false;
     }
     if (!inputsValues.weightHeight) {
-      handleInputError('Ingrese el peso y altura del animal', 'weightHeight');
+      handleInputError("Ingrese el peso y altura del animal", "weightHeight");
       isValid = false;
     }
     if (!inputsValues.zones) {
-      handleInputError('Ingrese las zonas que habita el animal', 'zones');
+      handleInputError("Ingrese las zonas que habita el animal", "zones");
       isValid = false;
     }
     if (!inputsValues.diet) {
-      handleInputError('Ingrese la dieta del animal', 'diet');
+      handleInputError("Ingrese la dieta del animal", "diet");
       isValid = false;
     }
 
@@ -95,39 +99,38 @@ export default AddAnimal = () => {
         weightHeight: inputsValues.weightHeight,
         zones: inputsValues.zones,
         diet: inputsValues.diet,
-        //extinction: isInExtintion,
-        extinction: true,
+        extinction: peligroExtincion,
       };
 
       const url = `http://${IP_ADDRESS}/api/agregarAnimal`;
 
       let response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(newAnimal),
       });
 
       if (response.ok) {
-        Alert.alert('La operación se realizó correctamente.');
+        Alert.alert("La operación se realizó correctamente.");
       }
     } catch (error) {
       Alert.alert(
-        'Error',
-        'Servidor no disponible en este momento, vuelva a intentar más tarde.'
+        "Error",
+        "Servidor no disponible en este momento, vuelva a intentar más tarde."
       );
     } finally {
       setRequestRunning(false);
 
       // Resetear valores de hooks state
       setInputsValues({
-        name: '',
-        scientificName: '',
-        description: '',
-        weightHeight: '',
-        zones: '',
-        diet: '',
+        name: "",
+        scientificName: "",
+        description: "",
+        weightHeight: "",
+        zones: "",
+        diet: ""
       });
     }
   };
@@ -135,7 +138,7 @@ export default AddAnimal = () => {
   if (requestRunning)
     return (
       <View style={styles.uploadingContainer}>
-        <ActivityIndicator color='orange' size='large' />
+        <ActivityIndicator color="orange" size="large" />
       </View>
     );
 
@@ -144,77 +147,85 @@ export default AddAnimal = () => {
       style={styles.formContainer}
       contentContainerStyle={{
         flexGrow: 1,
-        alignItems: 'center',
+        alignItems: "center",
         paddingBottom: 30,
       }}
     >
       <Input
-        leftIconName='paw'
-        placeholder='Nombre'
+        leftIconName="paw"
+        placeholder="Nombre"
         onChangeText={(textValue) => {
-          handleOnChange(textValue, 'name');
+          handleOnChange(textValue, "name");
         }}
         error={inputsErrors.name}
         onFocus={() => {
-          handleInputError(null, 'name');
+          handleInputError(null, "name");
         }}
       />
 
       <Input
-        leftIconName='flask'
-        placeholder='Nombre científico'
-        onChangeText={(text) => handleOnChange(text, 'scientificName')}
+        leftIconName="flask"
+        placeholder="Nombre científico"
+        onChangeText={(text) => handleOnChange(text, "scientificName")}
         error={inputsErrors.scientificName}
         onFocus={() => {
-          handleInputError(null, 'scientificName');
+          handleInputError(null, "scientificName");
         }}
       />
 
       <Input
-        leftIconName='comment'
-        placeholder='Descripción'
+        leftIconName="comment"
+        placeholder="Descripción"
         numLines={7}
-        onChangeText={(text) => handleOnChange(text, 'description')}
+        onChangeText={(text) => handleOnChange(text, "description")}
         error={inputsErrors.description}
         onFocus={() => {
-          handleInputError(null, 'description');
+          handleInputError(null, "description");
         }}
       />
 
       <Input
-        leftIconName='dumbbell'
-        placeholder='Peso / Altura'
+        leftIconName="dumbbell"
+        placeholder="Peso / Altura"
         numLines={7}
-        onChangeText={(text) => handleOnChange(text, 'weightHeight')}
+        onChangeText={(text) => handleOnChange(text, "weightHeight")}
         error={inputsErrors.weightHeight}
         onFocus={() => {
-          handleInputError(null, 'weightHeight');
+          handleInputError(null, "weightHeight");
         }}
       />
 
       <Input
-        leftIconName='map-marker'
-        placeholder='Zonas'
+        leftIconName="map-marker"
+        placeholder="Zonas"
         numLines={7}
-        onChangeText={(text) => handleOnChange(text, 'zones')}
+        onChangeText={(text) => handleOnChange(text, "zones")}
         error={inputsErrors.zones}
         onFocus={() => {
-          handleInputError(null, 'zones');
+          handleInputError(null, "zones");
         }}
       />
 
       <Input
-        leftIconName='food-drumstick'
-        placeholder='Dieta'
+        leftIconName="food-drumstick"
+        placeholder="Dieta"
         numLines={7}
-        onChangeText={(text) => handleOnChange(text, 'diet')}
+        onChangeText={(text) => handleOnChange(text, "diet")}
         error={inputsErrors.diet}
         onFocus={() => {
-          handleInputError(null, 'diet');
+          handleInputError(null, "diet");
         }}
       />
-
-      <PrimaryButton title={'Guardar'} onPress={validateForm} />
+      
+      <CheckBox checkedColor= {"orange"} size={20} textStyle= {{fontSize: 15
+      }}containerStyle= {{backgroundColor:'transparent', marginBottom: 15}}
+      
+      title="En peligro de extinción"
+      checked={peligroExtincion}
+      onPress={() => setPeligro(!peligroExtincion)}
+    />
+      
+      <PrimaryButton title={"Guardar"} onPress={validateForm} />
     </ScrollView>
   );
 };

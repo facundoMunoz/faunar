@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '300',
     color: 'lightgray',
-    marginBottom: 5,
+    //marginBottom: 5,
   },
   text: {
     fontSize: 15,

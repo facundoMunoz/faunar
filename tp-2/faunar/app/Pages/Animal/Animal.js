@@ -1,8 +1,10 @@
 import { View, Text, ImageBackground, Image } from 'react-native';
 import Onboarding from '../../Components/Onboarding/Onboarding';
-import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
+import globalStyles from '../../GlobalStyles/GlobalStyles';
 import styles from './Styles';
 import { LinearGradient } from 'expo-linear-gradient';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 
 export default Animal = ({ route }) => {
   const { item, img } = route.params;
@@ -28,10 +30,13 @@ export default Animal = ({ route }) => {
               <Text style={styles.animalScientificNameText}>
                 {item.scientificName}
               </Text>
-              {item.extinction && (
+              {item.extinction && (  
+                <View style={{flexDirection: 'row', alignItems: "center"}}>
+                <MaterialCommunityIcons name={"alert-outline"} size={25} color={'orange'} style= {{paddingRight: 5}}/>
                 <Text style={styles.inExtinctionText}>
                   Especie en peligro de extinción
                 </Text>
+                </View>
               )}
             </View>
 

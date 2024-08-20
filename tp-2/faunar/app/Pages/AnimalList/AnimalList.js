@@ -6,9 +6,9 @@ import {
   RefreshControl,
 } from 'react-native';
 import Card from '../../Components/Card/Card';
-import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
+import globalStyles from '../../GlobalStyles/GlobalStyles';
 import styles from './Styles';
-import { getAnimals } from './Services';
+import { getAnimals } from '../../Services/Services';
 import { ANIMALS_IMAGES } from '../../Constants/constants';
 
 export default AnimalList = () => {
@@ -38,7 +38,7 @@ export default AnimalList = () => {
       const moreAnimals = await getAnimals(page, limit);
 
       // Simula la espera de request de más animales
-      await sleep(1000);
+      await sleep(500);
 
       setAnimals([...animals, ...moreAnimals.results]);
 

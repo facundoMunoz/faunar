@@ -27,10 +27,3 @@ export default Card = ({ item, img }) => {
     </TouchableOpacity>
   );
 };
-
-/*
-<View style={styles.titleContainer}>
-  <Text style={styles.title}>{item.name}</Text>
-  <Text style={styles.scientificName}>{item.scientificName}</Text>
-</View>;
-*/

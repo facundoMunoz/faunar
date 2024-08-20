@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
   navbarContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 45,
-    marginBottom: 45,
+    marginTop: 20,
+    marginBottom: 20,
     borderBottomWidth: 0.2,
     borderColor: 'lightgray',
     paddingBottom: 0.5,

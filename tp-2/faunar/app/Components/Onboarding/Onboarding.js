@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { FlatList, View, Animated, Dimensions } from 'react-native';
 import OnboardingItem from './OnboardingItem';
-import globalStyles from '../GlobalStyles/GlobalStyles';
+import globalStyles from '../../GlobalStyles/GlobalStyles';
 
 export default Onboarding = (item) => {
   const { animalCharacteristics } = item;
