@@ -6,11 +6,10 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from '../../Components/Input/Input';
 import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 import styles from './Styles';
-import { IP_ADDRESS } from "../../Constants/constants";
+import { IP_ADDRESS } from '../../Constants/constants';
 
 export default AddAnimal = () => {
   // Hooks
@@ -101,7 +100,7 @@ export default AddAnimal = () => {
       };
 
       const url = `http://${IP_ADDRESS}/api/agregarAnimal`;
-        
+
       let response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -109,112 +108,113 @@ export default AddAnimal = () => {
         },
         body: JSON.stringify(newAnimal),
       });
-      
+
       if (response.ok) {
         Alert.alert('La operación se realizó correctamente.');
       }
-      } catch (error) {
-        Alert.alert('Error', 'Servidor no disponible en este momento, vuelva a intentar más tarde.');
-      }
-      finally {
-        setRequestRunning(false);
-        
-        // Resetear valores de hooks state
-        setInputsValues({
-          name: '',
-          scientificName: '',
-          description: '',
-          weightHeight: '',
-          zones: '',
-          diet: '',
-        });
-      }
+    } catch (error) {
+      Alert.alert(
+        'Error',
+        'Servidor no disponible en este momento, vuelva a intentar más tarde.'
+      );
+    } finally {
+      setRequestRunning(false);
+
+      // Resetear valores de hooks state
+      setInputsValues({
+        name: '',
+        scientificName: '',
+        description: '',
+        weightHeight: '',
+        zones: '',
+        diet: '',
+      });
+    }
   };
-  
+
   if (requestRunning)
     return (
       <View style={styles.uploadingContainer}>
         <ActivityIndicator color='orange' size='large' />
       </View>
     );
-  
+
   return (
-    <SafeAreaView>
-      <ScrollView
-        style={styles.formContainer}
-        contentContainerStyle={{
-          flexGrow: 1,
-          alignItems: 'center',
+    <ScrollView
+      style={styles.formContainer}
+      contentContainerStyle={{
+        flexGrow: 1,
+        alignItems: 'center',
+        paddingBottom: 30,
+      }}
+    >
+      <Input
+        leftIconName='paw'
+        placeholder='Nombre'
+        onChangeText={(textValue) => {
+          handleOnChange(textValue, 'name');
         }}
-      >
-        <Input
-          leftIconName='paw'
-          placeholder='Nombre'
-          onChangeText={(textValue) => {
-            handleOnChange(textValue, 'name');
-          }}
-          error={inputsErrors.name}
-          onFocus={() => {
-            handleInputError(null, 'name');
-          }}
-        />
+        error={inputsErrors.name}
+        onFocus={() => {
+          handleInputError(null, 'name');
+        }}
+      />
 
-        <Input
-          leftIconName='flask'
-          placeholder='Nombre científico'
-          onChangeText={(text) => handleOnChange(text, 'scientificName')}
-          error={inputsErrors.scientificName}
-          onFocus={() => {
-            handleInputError(null, 'scientificName');
-          }}
-        />
+      <Input
+        leftIconName='flask'
+        placeholder='Nombre científico'
+        onChangeText={(text) => handleOnChange(text, 'scientificName')}
+        error={inputsErrors.scientificName}
+        onFocus={() => {
+          handleInputError(null, 'scientificName');
+        }}
+      />
 
-        <Input
-          leftIconName='comment'
-          placeholder='Descripción'
-          numLines={7}
-          onChangeText={(text) => handleOnChange(text, 'description')}
-          error={inputsErrors.description}
-          onFocus={() => {
-            handleInputError(null, 'description');
-          }}
-        />
+      <Input
+        leftIconName='comment'
+        placeholder='Descripción'
+        numLines={7}
+        onChangeText={(text) => handleOnChange(text, 'description')}
+        error={inputsErrors.description}
+        onFocus={() => {
+          handleInputError(null, 'description');
+        }}
+      />
 
-        <Input
-          leftIconName='dumbbell'
-          placeholder='Peso / Altura'
-          numLines={7}
-          onChangeText={(text) => handleOnChange(text, 'weightHeight')}
-          error={inputsErrors.weightHeight}
-          onFocus={() => {
-            handleInputError(null, 'weightHeight');
-          }}
-        />
+      <Input
+        leftIconName='dumbbell'
+        placeholder='Peso / Altura'
+        numLines={7}
+        onChangeText={(text) => handleOnChange(text, 'weightHeight')}
+        error={inputsErrors.weightHeight}
+        onFocus={() => {
+          handleInputError(null, 'weightHeight');
+        }}
+      />
 
-        <Input
-          leftIconName='map-marker'
-          placeholder='Zonas'
-          numLines={7}
-          onChangeText={(text) => handleOnChange(text, 'zones')}
-          error={inputsErrors.zones}
-          onFocus={() => {
-            handleInputError(null, 'zones');
-          }}
-        />
+      <Input
+        leftIconName='map-marker'
+        placeholder='Zonas'
+        numLines={7}
+        onChangeText={(text) => handleOnChange(text, 'zones')}
+        error={inputsErrors.zones}
+        onFocus={() => {
+          handleInputError(null, 'zones');
+        }}
+      />
 
-        <Input
-          leftIconName='food-drumstick'
-          placeholder='Dieta'
-          numLines={7}
-          onChangeText={(text) => handleOnChange(text, 'diet')}
-          error={inputsErrors.diet}
-          onFocus={() => {
-            handleInputError(null, 'diet');
-          }}
-        />
+      <Input
+        leftIconName='food-drumstick'
+        placeholder='Dieta'
+        numLines={7}
+        onChangeText={(text) => handleOnChange(text, 'diet')}
+        error={inputsErrors.diet}
+        onFocus={() => {
+          handleInputError(null, 'diet');
+        }}
+      />
 
-        <PrimaryButton title={'Guardar'} onPress={validateForm} />
-      </ScrollView>
-    </SafeAreaView>
+      <PrimaryButton title={'Guardar'} onPress={validateForm} />
+    </ScrollView>
   );
-}
+};

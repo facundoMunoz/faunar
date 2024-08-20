@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   backgroundImage: {
-    width: '100%',
+    flex: 1,
     alignSelf: 'center',
   },
   backgroundGradient: {

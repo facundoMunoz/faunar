@@ -1,26 +1,33 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View,
-  Text,
-  TouchableOpacity,
   FlatList,
   ActivityIndicator,
-  Image,
-  ImageBackground,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import globalStyles from "../../Components/GlobalStyles/GlobalStyles";
-import styles from "./Styles";
-import { getAnimals } from "./Services";
-import { ANIMALS_IMAGES } from "../../Constants/constants";
+  RefreshControl,
+} from 'react-native';
+import Card from '../../Components/Card/Card';
+import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
+import styles from './Styles';
+import { getAnimals } from './Services';
+import { ANIMALS_IMAGES } from '../../Constants/constants';
 
 export default AnimalList = () => {
   const [animals, setAnimals] = useState([]);
   const [requestRunning, setRequestRunning] = useState(false);
   const [page, setPage] = useState(1);
   const nextPage = useRef();
+  const [refreshing, setRefreshing] = useState(false);
 
   const limit = 4;
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setAnimals([]);
+      getAnimalsData();
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   // Simula la espera de request de más animales
   const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
@@ -41,7 +48,7 @@ export default AnimalList = () => {
         nextPage.current = null;
       }
     } catch (e) {
-      console.log("Error al cargar más animales en la flatlist: " + e.message);
+      console.log('Error al cargar más animales en la flatlist: ' + e.message);
     }
     setRequestRunning(false);
   };
@@ -58,49 +65,32 @@ export default AnimalList = () => {
 
   const renderMoreAnimalsLoader = () => {
     if (requestRunning) {
-      return <ActivityIndicator color="orange" size="large" />;
+      return <ActivityIndicator color='orange' size='large' />;
     }
   };
 
-  const navigation = useNavigation();
-
   return (
-    <View
-      style={[
-        globalStyles.container,
-        { backgroundColor: "#F5F5DC"},
-      ]}
-    >
+    <View style={[globalStyles.container, { backgroundColor: '#F5F5DC' }]}>
       <FlatList
-        style={[styles.flatListContainer, {left: 30, marginTop:40}]}
+        style={[styles.flatListContainer]}
         data={animals}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("Animal", {
-                item,
-                img: ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES["default"],
-              })
-            }
-          >
-            <View style={styles.card}>
-              <View style={styles.imageContainer}>
-                <Image
-                  source={ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES["default"]}
-                  style={styles.image}
-                />
-                <View style={styles.titleContainer}>
-                  <Text style={styles.title}>{item.name}</Text>
-                  <Text style={styles.scientificName}>{item.scientificName}</Text>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
+          <Card
+            item={item}
+            img={ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES['default']}
+          />
         )}
-        refreshing={true}
         ListFooterComponent={renderMoreAnimalsLoader}
         onEndReachedThreshold={0.6}
         onEndReached={fetchNextAnimalPage}
+        bounces={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={['orange']}
+          />
+        }
       />
     </View>
   );
