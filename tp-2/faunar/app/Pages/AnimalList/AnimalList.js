@@ -1,20 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
-  FlatList, 
-  ActivityIndicator, 
-  Image, 
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import globalStyles from '../../Components/GlobalStyles/GlobalStyles';
-import styles from './Styles';
-import { getAnimals } from './Services';
-import { ANIMALS_IMAGES } from '../../Constants/constants';
+import { useState, useEffect, useRef } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  ActivityIndicator,
+  Image,
+  ImageBackground,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import globalStyles from "../../Components/GlobalStyles/GlobalStyles";
+import styles from "./Styles";
+import { getAnimals } from "./Services";
+import { ANIMALS_IMAGES } from "../../Constants/constants";
 
 export default AnimalList = () => {
-
   const [animals, setAnimals] = useState([]);
   const [requestRunning, setRequestRunning] = useState(false);
   const [page, setPage] = useState(1);
@@ -22,7 +22,7 @@ export default AnimalList = () => {
 
   const limit = 4;
 
-  // Simula la espera de request de más animales 
+  // Simula la espera de request de más animales
   const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
   const getAnimalsData = async () => {
@@ -30,7 +30,7 @@ export default AnimalList = () => {
       setRequestRunning(true);
       const moreAnimals = await getAnimals(page, limit);
 
-      // Simula la espera de request de más animales 
+      // Simula la espera de request de más animales
       await sleep(1000);
 
       setAnimals([...animals, ...moreAnimals.results]);
@@ -41,7 +41,7 @@ export default AnimalList = () => {
         nextPage.current = null;
       }
     } catch (e) {
-      console.log('Error al cargar más animales en la flatlist: ' + e.message);
+      console.log("Error al cargar más animales en la flatlist: " + e.message);
     }
     setRequestRunning(false);
   };
@@ -58,33 +58,41 @@ export default AnimalList = () => {
 
   const renderMoreAnimalsLoader = () => {
     if (requestRunning) {
-      return <ActivityIndicator color='orange' size='large' />;
+      return <ActivityIndicator color="orange" size="large" />;
     }
   };
 
   const navigation = useNavigation();
 
   return (
-    <View style={[globalStyles.container, {backgroundColor: 'snow', paddingHorizontal: 15,}]}>
+    <View
+      style={[
+        globalStyles.container,
+        { backgroundColor: "#F5F5DC"},
+      ]}
+    >
       <FlatList
-        style={styles.flatListContainer}
+        style={[styles.flatListContainer, {left: 30, marginTop:40}]}
         data={animals}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('Animal', {
+              navigation.navigate("Animal", {
                 item,
-                img: ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES['default'],
+                img: ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES["default"],
               })
             }
           >
-            <View style={styles.cardContainer}>
-              <Image
-                style={styles.image}
-                source={ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES['default']}
-              />
-              <View style={styles.textContainer}>
-                <Text style={styles.text}>{item.name}</Text>
+            <View style={styles.card}>
+              <View style={styles.imageContainer}>
+                <Image
+                  source={ANIMALS_IMAGES[item.id] || ANIMALS_IMAGES["default"]}
+                  style={styles.image}
+                />
+                <View style={styles.titleContainer}>
+                  <Text style={styles.title}>{item.name}</Text>
+                  <Text style={styles.scientificName}>{item.scientificName}</Text>
+                </View>
               </View>
             </View>
           </TouchableOpacity>
@@ -96,4 +104,4 @@ export default AnimalList = () => {
       />
     </View>
   );
-}
+};
