@@ -5,16 +5,15 @@ import styles from './Styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-
 export default Animal = ({ route }) => {
-  const { item, img } = route.params;
-  const { width, height } = Image.resolveAssetSource(img);
+  const { item, imgDetails } = route.params;
+  const { width, height } = Image.resolveAssetSource(imgDetails);
 
   return (
     <View style={[globalStyles.container]}>
       <View style={styles.backgroundImageContainer}>
         <ImageBackground
-          source={img}
+          source={imgDetails}
           style={[styles.backgroundImage, { aspectRatio: width / height }]}
         />
       </View>
@@ -30,12 +29,17 @@ export default Animal = ({ route }) => {
               <Text style={styles.animalScientificNameText}>
                 {item.scientificName}
               </Text>
-              {item.extinction && (  
-                <View style={{flexDirection: 'row', alignItems: "center"}}>
-                <MaterialCommunityIcons name={"alert-outline"} size={25} color={'orange'} style= {{paddingRight: 5}}/>
-                <Text style={styles.inExtinctionText}>
-                  Especie en peligro de extinción
-                </Text>
+              {item.extinction && (
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <MaterialCommunityIcons
+                    name={'alert-outline'}
+                    size={25}
+                    color={'orange'}
+                    style={{ paddingRight: 5 }}
+                  />
+                  <Text style={styles.inExtinctionText}>
+                    Especie en peligro de extinción
+                  </Text>
                 </View>
               )}
             </View>

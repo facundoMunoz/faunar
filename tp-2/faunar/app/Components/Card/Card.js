@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './Styles';
 
 export default Card = ({ item, img }) => {
+  const { cardImg: imgCard, detailsImg: imgDetails } = img;
   const navigation = useNavigation();
 
   return (
@@ -11,13 +12,13 @@ export default Card = ({ item, img }) => {
       onPress={() =>
         navigation.navigate('Animal', {
           item,
-          img,
+          imgDetails,
         })
       }
     >
       <View style={styles.cardContainer}>
         <View style={styles.imageContainer}>
-          <Image style={[styles.image]} source={img} />
+          <Image style={[styles.image]} source={imgCard} />
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.name}>{item.name}</Text>

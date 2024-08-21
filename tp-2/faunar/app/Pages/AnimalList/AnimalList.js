@@ -22,11 +22,12 @@ export default AnimalList = () => {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+    setAnimals([]);
+    nextPage.current = 0;
+    getAnimalsData();
     setTimeout(() => {
-      setAnimals([]);
-      getAnimalsData();
       setRefreshing(false);
-    }, 2000);
+    }, 500);
   }, []);
 
   // Simula la espera de request de más animales
