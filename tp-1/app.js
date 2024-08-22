@@ -1,5 +1,7 @@
 /* --- Configuración del Servidor --- */
 
+const ip = 'localhost';
+
 // Trae la libreria "express" para hacer un servidor web
 const express = require('express');
 const path = require('path');
@@ -14,7 +16,7 @@ const port = 3000;
 // Abre el servidor
 // Para probar en una red local reemplazar ip por la ip del host
 // TODO: tomar la ip del host automaticamente
-app.listen(port, 'localhost', () => {
+app.listen(port, ip, () => {
   console.log('Server running on port ', port);
 });
 
