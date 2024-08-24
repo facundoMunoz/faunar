@@ -1,6 +1,7 @@
 /* --- Configuración del Servidor --- */
 
-const ip = 'localhost';
+// Replace YourIP with host ip
+const ip = 'YourIP';
 
 // Trae la libreria "express" para hacer un servidor web
 const express = require('express');

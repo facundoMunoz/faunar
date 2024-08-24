@@ -1,5 +1,6 @@
-// Para que desde expo go haga el fetch, reemplazar por la ip propia del host server
-const IP = '192.168.1.40';
+// Replace YourIP with host IP
+const IP = 'YourIP';
+
 const PORT = '3000';
 export const IP_ADDRESS = `${IP}:${PORT}`;
 
