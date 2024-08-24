@@ -17,8 +17,8 @@ FaunAr shows information about Argentinian wildlife through a NodeJS website and
 ![screenshot1](./img/screenshot-2.png)
 
 ### Mobile App
-![screenshot1](./img/screenshot-3.png)
-![screenshot1](./img/screenshot-4.png)
+![screenshot1](./img/screenshot-3.jpeg)
+![screenshot1](./img/screenshot-4.jpeg)
 
 </details>
 
