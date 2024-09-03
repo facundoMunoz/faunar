@@ -3,7 +3,7 @@
 
 # FaunAr
 
-FaunAr shows information about Argentinian wildlife through a NodeJS website and a React Native app.
+FaunAr shows information about argentinian wildlife through a NodeJS website and a React Native app.
 
 [![Licence][license-shield]](./LICENSE)
 
